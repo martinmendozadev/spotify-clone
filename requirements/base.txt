@@ -17,11 +17,7 @@ argon2-cffi==20.1.0
 whitenoise==5.0.1
 
 # Celery
-redis==3.5.1
+redis==3.5.0
 django-redis==4.11.0
 celery==4.4.2
 flower==0.9.4
-tornado==6.0.4
-
-# Django REST Framework
-djangorestframework==3.11.0

@@ -4,5 +4,5 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-# Change string 'spotify_clone' for your project_name
-celery -A project.taskapp worker -l INFO
+# Change string 'spotify' for your project_name
+celery -A spotify.taskapp worker -l INFO

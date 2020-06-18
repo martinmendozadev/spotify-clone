@@ -10,7 +10,7 @@ if not settings.configured:
     # set the default Django settings module for the 'celery' program.
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')  # pragma: no cover
 
-app = Celery('spotify_clone')
+app = Celery('spotify')
 # Using a string here means the worker will not have to
 # pickle the object when using Windows.
 # - namespace='CELERY' means all celery-related configuration keys
@@ -19,7 +19,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 
 class CeleryAppConfig(AppConfig):
-    name = 'spotify_clone.taskapp'
+    name = 'spotify.taskapp'
     verbose_name = 'Celery Config'
 
     def ready(self):

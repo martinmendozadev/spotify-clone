@@ -10,7 +10,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    image: spotify_clone_production_django
+    image: spotify_production_django
     depends_on:
       - postgres
       - redis
@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: spotify_clone_production_postgres
+    image: spotify_production_postgres
     volumes:
       - production_postgres_data:/var/lib/postgresql/data
       - production_postgres_data_backups:/backups
@@ -34,7 +34,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/caddy/Dockerfile
-    image: spotify_clone_production_caddy
+    image: spotify_production_caddy
     depends_on:
       - django
     volumes:
@@ -50,17 +50,17 @@ services:
 
   celeryworker:
     <<: *django
-    image: spotify_clone_production_celeryworker
+    image: spotify_production_celeryworker
     command: /start-celeryworker
 
   celerybeat:
     <<: *django
-    image: spotify_clone_production_celerybeat
+    image: spotify_production_celerybeat
     command: /start-celerybeat
 
   flower:
     <<: *django
-    image: spotify_clone_production_flower
+    image: spotify_production_flower
     ports:
       - "5555:5555"
     command: /start-flower

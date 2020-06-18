@@ -5,7 +5,7 @@ from .base import env
 
 # Base
 SECRET_KEY = env('DJANGO_SECRET_KEY')
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['spotify_clone.com'])
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['marttcode.com'])
 
 # Databases
 DATABASES['default'] = env.db('DATABASE_URL')  # NOQA
@@ -66,10 +66,10 @@ TEMPLATES[0]['OPTIONS']['loaders'] = [  # noqa F405
 # Email
 DEFAULT_FROM_EMAIL = env(
     'DJANGO_DEFAULT_FROM_EMAIL',
-    default='spotify_clone <noreply@spotify_clone.com>'
+    default='spotify <noreply@marttcode.com>'
 )
 SERVER_EMAIL = env('DJANGO_SERVER_EMAIL', default=DEFAULT_FROM_EMAIL)
-EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[spotify_clone]')
+EMAIL_SUBJECT_PREFIX = env('DJANGO_EMAIL_SUBJECT_PREFIX', default='[spotify]')
 
 # Admin
 ADMIN_URL = env('DJANGO_ADMIN_URL')

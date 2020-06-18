@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    {% block head_content %}
+    {% endblock %}
+
+
+    {% load static %}
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static 'css/test.css' %}" />
+    <link rel="icon" href=" {% static 'images/Platzi-master-logo.png' %}">
+    <meta name="theme-color" content="#563d7c">
+
+</head>
+<body>
+
+    {% include "nav.html" %}
+
+    <div class="container mt-5">
+        {% block container %}
+        {% endblock%}
+    </div>
+
+  <script src="{% static 'js/test.js' %}"></script>
+</body>
+</html>

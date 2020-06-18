@@ -5,5 +5,4 @@ set -o nounset
 
 
 rm -f './celerybeat.pid'
-# Change string 'spotify_clone' for your project_name
-celery -A demo_project.taskapp beat -l INFO
+celery -A spotify.taskapp beat -l INFO
