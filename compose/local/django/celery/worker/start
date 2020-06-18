@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -o errexit
+set -o nounset
+
+# Change string 'spotify_clone' for your project_name
+celery -A demo_project.taskapp worker -l INFO

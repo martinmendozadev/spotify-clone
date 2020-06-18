@@ -1,0 +1,27 @@
+# Base
+pytz==2020.1
+python-slugify==4.0.0
+pillow==7.1.2
+psycopg2==2.8.5 --no-binary psycopg2
+
+# Django
+django==3.0.7
+
+# Environment
+django-environ==0.4.5
+
+# Passwords security
+argon2-cffi==20.1.0
+
+# Static files
+whitenoise==5.0.1
+
+# Celery
+redis==3.5.1
+django-redis==4.11.0
+celery==4.4.2
+flower==0.9.4
+tornado==6.0.4
+
+# Django REST Framework
+djangorestframework==3.11.0
