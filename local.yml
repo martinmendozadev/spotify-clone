@@ -31,6 +31,8 @@ services:
       - local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
+    ports:
+      - "6969:5432"
 
   redis:
     image: redis:5.0
