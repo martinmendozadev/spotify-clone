@@ -17,7 +17,7 @@ def hello(request):
 
     return render(
         request,
-        'test/hello.html',
+        'test/login.html',
         context={
             'data': data
         }

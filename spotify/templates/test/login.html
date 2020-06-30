@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login - Spotify</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div>
+        <div>
+            <div class="head">
+                <a class="spotify-logo" title="Spotify" href="/"></a>
+            </div>
+        </div>
+
+        <div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <span class="h5">To continue, log in to Spotify.</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a class="btn btn-block btn-facebook" href="/">Continue with Facebook</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a class="btn btn-block btn-black btn-apple" href="/">Continue with Apple</a>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xs-12">
+                        <a class="btn btn-block btn-default" href="/">Continue with phone number</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="divider">
+                            <strong class="divider-title">or</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <form>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" name="username" id="login-username" placeholder="Email address or username">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 ">
+                            <input type="password " class="form-control" name="password" id="login-password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="row row-submit">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember" id="login-remember">Remember me
+                                    <span class="control-indicator "></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 ">
+                            <button class="btn btn-block btn-green" id="login-button">Log In</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row">
+                    <div class="col-xs-12 text-center ">
+                        <p>
+                            <a id="reset-password-link" href="/">Forgot your password?</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="sign-up-section">
+                    <div class="row">
+                        <div class="col-xs-12 ">
+                            <signup>
+                                <div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="divider">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-center mt-0">
+                                            <div class="h4">Don't have an account?</div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <a id="sign-up-link " class="btn btn-block btn-default " role="button" href="/signup.html">Sign up for Spotify</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </signup>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="divider"></div>
+                        <p class="text-muted disclaimer text-center">If you click "Log in with Facebook" and are not a Spotify user, you will be registered and you agree to Spotify's <a href="/" target="_blank ">Terms &amp; Conditions</a> and
+                            <a href="/" target="_blank">Privacy Policy</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

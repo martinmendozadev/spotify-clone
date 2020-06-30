@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SIgn up - Spotify</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div>
+        <div>
+            <div class="head">
+                <a class="spotify-logo" title="Spotify" href="/"></a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="row">
+                <h2 class="text-center">Sign up for free to start listening.</h2>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="/" class="btn btn-block btn-facebook">Sign up with Facebook</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="divider">
+                        <span class="divider-title">or</span>
+                    </div>
+                </div>
+            </div>
+            <form>
+                <h3 class="text-center">Sign up with your email address</h3>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="email" class="h3">What's your email?</label>
+                        <input id="email" name="email" placeholder="Enter your email." type="email" class="form-control">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="confirm" class="h3">Confirm your email</label>
+                        <input id="confirm" name="confirm" placeholder="Enter your email again." type="email" class="form-control">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="password" class="h3">Create a password</label>
+                        <input id="password" name="password" placeholder="Create a password." type="password" class="form-control">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="displayname" class="h3">What should we call you?</label>
+                        <input id="displayname" name="displayname" placeholder="Enter a profile name." type="text" class="form-control">
+                    </div>
+
+                </div>
+                <div class="row row-submit">
+                    <div class="col-xs-12">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="thirdParty" class="checkbox">
+                                <span class="control-indicator"></span>
+                                <span class="">Share my registration data with Spotify's content providers for marketing purposes.</span>
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="text-center text-muted"><span class="">By clicking on Sign up, you agree to Spotify's <a href="/" target="_blank">Terms and Conditions of Use</a>.</span></p>
+                                <p class="text-center text-muted"><span class="">To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's <a href="/" target="_blank">Privacy Policy</a>.</span></p>
+                                <div class=""><button type="submit" class="btn btn-block btn-green">Sign up</button></div>
+                                <p class="text-center"><span class="">Have an account? <a href="/login.html">Log in</a>.</span></p>
+                            </div>
+                        </div>
+
+            </form>
+            </div>
+            </div>
+</body>
+
+</html>
