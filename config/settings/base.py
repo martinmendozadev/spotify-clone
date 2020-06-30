@@ -103,6 +103,11 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(APPS_DIR('media'))
 MEDIA_URL = '/media/'
 
+# Login & Logout
+LOGIN_URL = ('/login')
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = LOGIN_URL
+
 # Templates
 TEMPLATES = [
     {
