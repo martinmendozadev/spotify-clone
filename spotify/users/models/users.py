@@ -14,6 +14,7 @@ class User(BaseModel, AbstractUser):
     Extend from Django's Abstract User.
     """
 
+    email = models.EmailField('email address', unique=True)
     is_membership = models.BooleanField(
         'client',
         default=True,
@@ -27,7 +28,6 @@ class User(BaseModel, AbstractUser):
         default=True,
         help_text='Set to true when the user have verified its email address.'
     )
-
     birthdate = models.DateField(
         'Birthdate',
         blank=True,
