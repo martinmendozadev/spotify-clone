@@ -11,5 +11,6 @@ urlpatterns = [
 
     # Local
     path('', include(('spotify.test.urls', 'test'), namespace='test')),
+    path('', include(('spotify.users.urls', 'users'), namespace='users')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
