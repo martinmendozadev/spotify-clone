@@ -1,0 +1,43 @@
+<form action="{% url 'users:signup' %}" method="POST">
+  {% csrf_token %}
+
+{{ form.non_field_errors }}
+{{ form.email.errors }}
+
+    <div class="">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">username</label>
+        {{ form.username }}
+    </div>
+
+
+
+    </div>
+    <div class="">
+        <label for="{{ form.password.id_for_label }}">password</label>
+        {{ form.password }}
+    </div>
+
+
+    <div class="">
+        <label for="{{ form.password_confirmation.id_for_label }}">password_confirmation</label>
+        {{ form.password_confirmation }}
+    </div>
+
+
+
+    <div class="">
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        {{ form.email }}
+    </div>
+
+
+  <button class="" type="submit">Register</button>
+</form>
+<br>
+<div class="">
+  <a href="{% url 'users:login' %}" class=""><small>Login</small></a>
+</div>
+
+<hr>
+
