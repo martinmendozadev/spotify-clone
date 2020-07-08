@@ -90,17 +90,7 @@ def get_info_by_show_name(artist_name):
 
 
 def run():
-    import requests
-    url_base = 'https://api.spotify.com/v1'
-
-    ep_artist = '/artists/{artist_id}'
-    id_zedd = '2qxJFvFYMEDqd7ui6kSAcq'
-    artist_id = id_zedd
-    r = requests.get(url_base+ep_artist.format(artist_id = id_zedd))
-    print(r.status_code)
-    print('step1 ok')
-
-"""     token_url = 'https://accounts.spotify.com/api/token'
+    token_url = 'https://accounts.spotify.com/api/token'
     params = {'grant_type': 'client_credentials'}
     headers = {'Authorization': 'Basic ODAwMjM3YWRhMWI4NGUxYTlmNTU1YjY3OGIxZGM5Y2I6ZmQxNjA0Y2Q2YzM4NGIzYThlYzA4ZjI4ZDM0NzA2MWU'}
     r = requests.post(token_url, data = params, headers = headers )
@@ -118,10 +108,10 @@ def run():
 
     print(r.json())
     info_by_artist = r.json()
- """
 
 
-if '__name__' == '__main__':
+
+if __name__ == '__main__':
 
     run()
 
