@@ -19,5 +19,5 @@ def hello(request):
 
     return render(
         request,
-        'users/search.html' 
+        'search.html' 
     )
