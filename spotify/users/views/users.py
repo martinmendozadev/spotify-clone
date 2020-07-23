@@ -1,13 +1,16 @@
 """Uses views."""
 
 # Django
-from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import FormView, UpdateView
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Forms
 from spotify.users.forms import SignupForm
+
+# Models
+from spotify.users.models import User
 
 
 class LoginView(auth_views.LoginView):
@@ -32,3 +35,18 @@ class SignupView(FormView):
         """Save form data."""
         form.save()
         return super().form_valid(form)
+
+
+class UpdateProfileView(LoginRequiredMixin, UpdateView):
+    """Update profile view."""
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+
+    template_name = 'users/update.html'
+    model = User
+    fields = ['first_name', 'last_name']
+
+    def get_success_url(self):
+        """Return to user's profile."""
+        username = self.object
+        return reverse('users:update', kwargs={'username': username})

@@ -22,7 +22,7 @@
                 <div class="App__nav-bar">
                     <nav class="App__navBar-content">
                         <div class="App__navBar-banner">
-                            <a href="#" class="logo">
+                            <a href="{% url 'users:update' user.username %}" class="logo">
                                 <img src="{% static '/images/logo.png' %}" alt="Spotify">
                             </a>
                         </div>
@@ -258,7 +258,9 @@
                         </div>
                     </footer>
                 </div>
-                <div class="App__main-view"></div>
+                <div class="App__main-view">
+
+                </div>
             </div>
         </div>
     </div>

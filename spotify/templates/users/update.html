@@ -1,0 +1,38 @@
+<form action="{% url 'users:update' user.username %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+
+  <div class="">
+    <label>First Name</label>
+    <input
+            class=""
+            type="text"
+            name="first_name"
+            placeholder="First name"
+            value="{% if form.errors %}{{ form.firstname.value }}{% else %}{{ user.firstname }}{% endif %}"
+    />
+    <div class="">
+      {% for error in form.firstname.errors %}
+        {{ error }}
+      {% endfor%}
+    </div>
+  </div>
+
+  <div class="">
+    <label>Last Name</label>
+    <input
+            class=""
+            type="text"
+            name="last_name"
+            placeholder="Last name"
+            value="{% if form.errors %}{{ form.lastname.value }}{% else %}{{ user.lastname }}{% endif %}"
+    />
+    <div class="">
+      {% for error in form.lastname.errors %}
+        {{ error }}
+      {% endfor%}
+    </div>
+  </div>
+
+  <button type="submit" class="">Update info</button>
+</form>
