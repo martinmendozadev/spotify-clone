@@ -1,4 +1,6 @@
+"""Request Info from Spotify API"""
 
+# Utils
 import requests
 
 
@@ -85,18 +87,3 @@ def get_info_by_show_name(show_name, token):
     result_search_show_name = search.json()
 
     return result_search_show_name
-
-
-if __name__ == '__main__':
-
-    token = get_token()
-    artist_name = input('Que artista buscas? ')
-    print(get_info_by_artist_name(artist_name, token))
-    """ track_name = input('Que cancion buscas? ').replace(' ', '+')
-    print(get_info_by_track_name(track_name, token))
-    album_name = input('Que album buscas? ').replace(' ', '+')
-    print(get_info_by_album_name(album_name, token))
-    playlist_name = input('Que playlist buscas? ').replace(' ', '+')
-    print(get_info_by_playlist_name(playlist_name, token))
-    show_name = input('Que show buscas? ').replace(' ', '+')
-    print(get_info_by_show_name(show_name, token)) """

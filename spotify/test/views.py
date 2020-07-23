@@ -4,18 +4,15 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+# Utils
+from spotify.scraping.scraping import get_info_by_artist_id, get_token
+
 
 @login_required()
 def hello(request):
     """Feed users."""
-    data = {
-        'username': 'name',
-        'age': 'age',
-        'email': 'email@example.com',
-        'phone': '7771234567',
-        'is_verified_account': False,
-        'picture': 'null',
-    }
+    token = get_token()
+    data = get_info_by_artist_id('bad bunny', token)
 
     return render(
         request,
