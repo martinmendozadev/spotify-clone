@@ -46,7 +46,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
 
     template_name = 'users/update.html'
     model = User
-    fields = ['first_name', 'last_name']
+    fields = ['first_name', 'last_name', 'birthdate', 'country', 'picture']
 
     def get_success_url(self):
         """Return to user's profile."""

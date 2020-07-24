@@ -123,8 +123,17 @@
 
 
         <!-------- Fix this section need stay into a form  ---------------------------------------------------------------------->
-                  <form action="{% url 'users:update' user.username %}" method="POST" enctype="multipart/form-data">
+          <form action="{% url 'users:update' user.username %}" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
+
+          <div class="media">
+            {% if profile.picture %}
+              <img src="{{ profile.picture.url }}" class="" height="50" />
+            {% else%}
+              <img src="{% static 'images/foto andres.jpg' %}" class="" height="50" />
+            {% endif %}
+            <p class="ml-4"><input type="file" name="picture"></p>
+          </div>
 
 
           <div class="">
@@ -134,10 +143,10 @@
                     type="text"
                     name="first_name"
                     placeholder="First name"
-                    value="{% if form.errors %}{{ form.firstname.value }}{% else %}{{ user.firstname }}{% endif %}"
+                    value="{% if form.errors %}{{ form.first_name.value }}{% else %}{{ user.first_name }}{% endif %}"
             />
             <div class="">
-              {% for error in form.firstname.errors %}
+              {% for error in form.first_name.errors %}
                 {{ error }}
               {% endfor%}
             </div>
@@ -150,10 +159,42 @@
                     type="text"
                     name="last_name"
                     placeholder="Last name"
-                    value="{% if form.errors %}{{ form.lastname.value }}{% else %}{{ user.lastname }}{% endif %}"
+                    value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ user.last_name }}{% endif %}"
             />
             <div class="">
-              {% for error in form.lastname.errors %}
+              {% for error in form.last_name.errors %}
+                {{ error }}
+              {% endfor%}
+            </div>
+          </div>
+
+          <div class="">
+            <label>Birthdate</label>
+            <input
+                    class=""
+                    type="text"
+                    name="birthdate"
+                    placeholder="Birthdate"
+                    value="{% if form.errors %}{{ form.birthdate.value }}{% else %}{% endif %}"
+            />
+            <div class="">
+              {% for error in form.birthdate.errors %}
+                {{ error }}
+              {% endfor%}
+            </div>
+          </div>
+
+          <div class="">
+            <label>Country</label>
+            <input
+                    class=""
+                    type="text"
+                    name="country"
+                    placeholder="Country"
+                    value="{% if form.errors %}{{ form.country.value }}{% else %}{% endif %}"
+            />
+            <div class="">
+              {% for error in form.country.errors %}
                 {{ error }}
               {% endfor%}
             </div>
