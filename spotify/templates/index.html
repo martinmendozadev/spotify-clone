@@ -264,8 +264,10 @@
                     </footer>
                 </div>
                 <div class="App__main-view">
-                  {{ data }}
 
+                  {% for item in data %}
+                    {{ item.description }}
+                  {% endfor %}
 
     <main class="search__container">
       <section class="search__main">

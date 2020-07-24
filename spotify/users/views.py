@@ -53,9 +53,38 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
         username = self.object
         return reverse('users:update', kwargs={'username': username})
 
+
 @login_required()
 def feed(request):
+    data = [
+        {
+            'image': 'url',
+            'title': 'listName 1',
+            'description': 'description 1',
+            'followers': '0000'
+        },
+        {
+            'image': 'url',
+            'title': 'listName 2',
+            'description': 'description 2',
+            'followers': '0000'
+        },
+        {
+            'image': 'url',
+            'title': 'listName 3',
+            'description': 'description 3',
+            'followers': '0000'
+        },
+        {
+            'image': 'url',
+            'title': 'listName 4',
+            'description': 'description 4',
+            'followers': '0000'
+        },
+    ]
+
     return render(
-        request,
-        'index.html',
+        request=request,
+        template_name='index.html',
+        context={'data': data},
     )
