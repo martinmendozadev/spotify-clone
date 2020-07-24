@@ -1,6 +1,7 @@
 """Uses views."""
 
 # Django
+from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import FormView, UpdateView
 from django.contrib.auth import views as auth_views
@@ -50,3 +51,10 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
         """Return to user's profile."""
         username = self.object
         return reverse('users:update', kwargs={'username': username})
+
+
+def feed(request):
+    return render(
+        request,
+        'index.html',
+    )

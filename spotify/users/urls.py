@@ -9,6 +9,12 @@ from spotify.users import views
 
 urlpatterns = [
     # Management
+
+    path(
+        route='',
+        view=views.feed,
+        name='feed'
+    ),
     path(
         route='login/',
         view=views.LoginView.as_view(),
