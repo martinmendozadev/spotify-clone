@@ -39,12 +39,12 @@
                                 </a>
                             </li>
                             <li class="navBar-item">
-                                <a href="#" class="navBar-link">
+                                <a href="{% url 'music:search' %}" class="navBar-link">
                                     <i class="fa fa-search icon"></i> Buscar
                                 </a>
                             </li>
                             <li class="navBar-item">
-                                <a href="" class="navBar-link">
+                                <a href="{% url 'music:detailMusic' %}" class="navBar-link">
                                     <i class="fa fa-list icon"></i> Tu Biblioteca
                                 </a>
                             </li>
@@ -60,7 +60,7 @@
                                         </button>
                                     </div>
                                     <div class="App__playlist-likes">
-                                        <a href="#" class="">
+                                        <a href="{% url 'music:myFavorite' %}" class="">
                                             <i class="fa fa-heart icon"></i>
                                             <span>Tus Me Gusta</span>
                                         </a>
@@ -174,7 +174,7 @@
                                     </div>
                                     <div class="now-playing-details">
                                         <div class="now-playing-title">
-                                            <a href="#" class="now-playing-track-link">BitâKora 5: Marcas en tiempos de COVID, Elon Musk y Bose.</a>
+                                            <a href="{% url 'music:playMusic' %}" class="now-playing-track-link">BitâKora 5: Marcas en tiempos de COVID, Elon Musk y Bose.</a>
                                         </div>
                                         <div class="now-playing-artist">
                                             <a href="#">Nadia Molina</a>
