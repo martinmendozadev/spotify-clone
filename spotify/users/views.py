@@ -6,6 +6,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import FormView, UpdateView
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Forms
 from spotify.users.forms import SignupForm
@@ -52,7 +53,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
         username = self.object
         return reverse('users:update', kwargs={'username': username})
 
-
+@login_required()
 def feed(request):
     return render(
         request,

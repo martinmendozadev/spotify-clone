@@ -293,7 +293,7 @@
           <div class="search__header--img">
             <a href="{% url 'users:update' user.username %}">
             <img src="{% static 'images/foto andres.jpg' %}" alt="" />
-            <span>Javier</span>
+            <span>{{ user.username }}</span>
             <span>
               <i class="icon-circle-down"></i>
             </span></a>

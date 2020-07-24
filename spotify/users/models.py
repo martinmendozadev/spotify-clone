@@ -17,7 +17,7 @@ class User(BaseModel, AbstractUser):
     email = models.EmailField('email address', unique=True)
     is_membership = models.BooleanField(
         'client',
-        default=True,
+        default=False,
         help_text=(
             'Help easily distinguish users and perform queries. '
             'Clients are the main type of user.'
@@ -32,6 +32,16 @@ class User(BaseModel, AbstractUser):
         'Birthdate',
         blank=True,
         null=True,
+    )
+    country = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+    )
+    picture = models.ImageField(
+        upload_to='users/pictures',
+        blank=True,
+        null=True
     )
 
     def __str__(self):
