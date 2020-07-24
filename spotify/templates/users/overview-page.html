@@ -7,8 +7,8 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../static/css/overview-page.css" />
-    <link rel="stylesheet" href="/spotify/static/css/overview-page.css" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/overview-page.css' %}">
     <title>Vista General de la Cuenta - Spotify</title>
   </head>
   <body>
@@ -17,7 +17,7 @@
       <div class="container__nav">
         <div class="nav__logo">
           <a href="https://open.spotify.com/">
-            <img src="../static/images/Spotify_Logo_RGB_White.png" alt="" />
+            <img src="{% static 'images/Spotify_Logo_RGB_White.png' %}" alt="" />
           </a>
         </div>
         <nav class="nav__contain">
@@ -27,7 +27,7 @@
             <li>Descargar</li>
             <li>|</li>
             <li>
-              <img src="../static/images/foto andres.jpg" alt="" />
+              <img src="{% static 'images/foto andres.jpg' %}" alt="" />
             </li>
             <li>
               Perfil
@@ -43,7 +43,7 @@
     <main class="account__container">
       <aside class="account__container--menu">
         <div class="account__photo">
-          <img src="../static/images/foto andres.jpg" alt="" />
+          <img src="{% static 'images/foto andres.jpg' %}" alt="" />
         </div>
         <div class="account__blocks">
           <span class="account__blocks--line"></span>
@@ -178,7 +178,7 @@
         <div class="footer__margin--top"></div>
         <div class="footer__logo">
           <a href="https://open.spotify.com/">
-            <img src="../static/images/Spotify_Logo_RGB_White.png" alt="" />
+            <img src="{% static 'images/Spotify_Logo_RGB_White.png' %}" alt="" />
           </a>
         </div>
         <div class="footer__title--one">
