@@ -291,7 +291,11 @@
           </div>
           <div class="search__header--img">
             <a href="{% url 'users:update' user.username %}">
-            <img src="{% static 'images/foto andres.jpg' %}" alt="" />
+            {% if user.picture %}
+              <img src="{{ user.picture.url }}" class="" height="50" />
+            {% else%}
+              <img src="{% static 'images/default-profile.png' %}" class="" height="50" />
+            {% endif %}
             <span>{{ user.username }}</span>
             <span>
               <i class="icon-circle-down"></i>
