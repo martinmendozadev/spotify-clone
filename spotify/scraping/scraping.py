@@ -2,6 +2,7 @@
 import requests
 import json
 import time
+from random import randint
 
 
 def get_token():
@@ -25,11 +26,13 @@ def get_info_by_artist_id(artist_id, token):
 
 
 def get_info_by_artist_name(artist_name, token):
-    #artists_random = ['zedd', 'calvin harris', 'eminem', 'avicii', 'green day', 'the beatles', 'linkin park']
+    random_number = randint(0,1995)
     artist_name = artist_name.replace(' ', '+')
     url_search = 'https://api.spotify.com/v1/search'
-    search_params = {'q': artist_name, 'type':'artist', 'market':'MX', 'limit':1}
+    search_params = {'q':'year:0000-9999', 'type':'artist', 'market':'MX', 'limit':4, 'offset':random_number}
+    search_params_pre = {'q':'year:0000-9999', 'type':'artist', 'market':'MX'}
     header = {'Authorization': 'Bearer {}'.format(token)}
+    search_pre = requests.get(url_search, headers = header, params = search_params_pre)
     search = requests.get(url_search, headers = header, params = search_params)
 
     if search.status_code == 200:
@@ -45,6 +48,7 @@ def get_info_by_artist_name(artist_name, token):
         return result_json
 
     else:
+        print(search.status_code)
         print('Request invalid')
     
 
@@ -117,7 +121,7 @@ def get_info_by_show_name(show_name, token):
 def get_info_search_bar(looking_for, token):
     looking_for = looking_for.replace(' ', '+')
     url_search = 'https://api.spotify.com/v1/search'
-    search_params = {'q': looking_for, 'type':['track', 'artist', 'album'], 'market':'MX', 'limit':3}
+    search_params = { 'q': looking_for,'type':'track,artist,album','market':'MX', 'limit':1, 'offset':0}
     header = {'Authorization': 'Bearer {}'.format(token)}
     search = requests.get(url_search, headers = header, params = search_params)
 
@@ -132,10 +136,10 @@ def get_info_search_bar(looking_for, token):
 if __name__ == '__main__':
 
     token = get_token()
-    """ looking_for = input('Que artista buscas? ')
+    """looking_for = input('Que artista buscas? ')
     print(get_info_search_bar(looking_for, token)) """
-    track_name = input('Que cancion buscas? ')
-    print(get_info_by_track_name(track_name, token))
+    """track_name = input('Que cancion buscas? ')
+    print(get_info_by_track_name(track_name, token)) """
     artist_name = input('Que artista buscas? ').replace(' ', '+')
     print(get_info_by_artist_name(artist_name, token))
     """playlist_name = input('Que playlist buscas? ').replace(' ', '+')
