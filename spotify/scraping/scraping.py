@@ -1,5 +1,7 @@
 
 import requests
+import json
+import time
 
 
 def get_token():
@@ -23,16 +25,28 @@ def get_info_by_artist_id(artist_id, token):
 
 
 def get_info_by_artist_name(artist_name, token):
+    #artists_random = ['zedd', 'calvin harris', 'eminem', 'avicii', 'green day', 'the beatles', 'linkin park']
     artist_name = artist_name.replace(' ', '+')
     url_search = 'https://api.spotify.com/v1/search'
     search_params = {'q': artist_name, 'type':'artist', 'market':'MX', 'limit':1}
     header = {'Authorization': 'Bearer {}'.format(token)}
     search = requests.get(url_search, headers = header, params = search_params)
 
-    print(search.status_code)
-    result_search_artist_name = search.json()
+    if search.status_code == 200:
+        result_search_artist_name = search.json()
 
-    return result_search_artist_name
+        result ={'image_url': 'none','artist': 'none', 'followers': 0, 'genres':'none', 'popularity':0}
+        result['image_url'] = result_search_artist_name['artists']['items'][0]['images'][1]['url']
+        result['artist'] = result_search_artist_name['artists']['items'][0]['name']
+        result['followers'] = result_search_artist_name['artists']['items'][0]['followers']['total']
+        result['genres'] = result_search_artist_name['artists']['items'][0]['genres'][0]
+        result['popularity']= result_search_artist_name['artists']['items'][0]['popularity']
+        result_json =json.dumps(result)
+        return result_json
+
+    else:
+        print('Request invalid')
+    
 
 
 def get_info_by_album_name(album_name, token):
@@ -41,6 +55,7 @@ def get_info_by_album_name(album_name, token):
     search_params = {'q': album_name, 'type':'album', 'market':'MX', 'limit':1}
     header = {'Authorization': 'Bearer {}'.format(token)}
     search = requests.get(url_search, headers = header, params = search_params)
+
 
     print(search.status_code)
     result_search_album_name = search.json()
@@ -55,10 +70,22 @@ def get_info_by_track_name(track_name, token):
     header = {'Authorization': 'Bearer {}'.format(token)}
     search = requests.get(url_search, headers = header, params = search_params)
 
-    print(search.status_code)
-    result_search_track_name = search.json()
+    if search.status_code == 200:
+        result_search_track_name = search.json()
 
-    return result_search_track_name
+        result ={'image_url':'none','title': 'none','artist': 'none', 'album':'none', 'duration':0}
+        result['image_url'] = result_search_track_name['tracks']['items'][0]['album']['images'][1]['url']
+        result['title'] = result_search_track_name['tracks']['items'][0]['name']
+        result['artist'] = result_search_track_name['tracks']['items'][0]['artists'][0]['name']
+        result['album'] = result_search_track_name['tracks']['items'][0]['album']['name']
+        duration_time = result_search_track_name['tracks']['items'][0]['duration_ms']
+        result['duration'] = time.strftime("%M:%S", time.gmtime(duration_time/1000))
+        result_json =json.dumps(result)
+        return result_json
+
+    else:
+        print('Request invalid')
+
 
 
 def get_info_by_playlist_name(playlist_name, token):
@@ -82,21 +109,36 @@ def get_info_by_show_name(show_name, token):
     search = requests.get(url_search, headers = header, params = search_params)
 
     print(search.status_code)
-    result_search_show_name = search.json()
+    result_search_show_name = search.json()['tracks']['items']['name']
 
     return result_search_show_name
+
+
+def get_info_search_bar(looking_for, token):
+    looking_for = looking_for.replace(' ', '+')
+    url_search = 'https://api.spotify.com/v1/search'
+    search_params = {'q': looking_for, 'type':['track', 'artist', 'album'], 'market':'MX', 'limit':3}
+    header = {'Authorization': 'Bearer {}'.format(token)}
+    search = requests.get(url_search, headers = header, params = search_params)
+
+    print(search.status_code)
+    result_search_bar = search.json()
+
+    return result_search_bar
+
+
 
 
 if __name__ == '__main__':
 
     token = get_token()
-    artist_name = input('Que artista buscas? ')
-    print(get_info_by_artist_name(artist_name, token))
-    """ track_name = input('Que cancion buscas? ').replace(' ', '+')
+    """ looking_for = input('Que artista buscas? ')
+    print(get_info_search_bar(looking_for, token)) """
+    track_name = input('Que cancion buscas? ')
     print(get_info_by_track_name(track_name, token))
-    album_name = input('Que album buscas? ').replace(' ', '+')
-    print(get_info_by_album_name(album_name, token))
-    playlist_name = input('Que playlist buscas? ').replace(' ', '+')
+    artist_name = input('Que artista buscas? ').replace(' ', '+')
+    print(get_info_by_artist_name(artist_name, token))
+    """playlist_name = input('Que playlist buscas? ').replace(' ', '+')
     print(get_info_by_playlist_name(playlist_name, token))
     show_name = input('Que show buscas? ').replace(' ', '+')
     print(get_info_by_show_name(show_name, token)) """
