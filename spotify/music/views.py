@@ -16,11 +16,11 @@ def search(request):
         'artist': 'Artist Name',
         'followers': '000000',
         'gene': 'Rock',
-        'pupulation': '000'
+        'popular': '000'
     }
     album = {
         'artist': 'Artist Name',
-        'Mercado': 'LATAM',
+        'market': 'LATAM',
     }
     context = {
         'track': track,
