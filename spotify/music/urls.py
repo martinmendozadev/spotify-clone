@@ -11,22 +11,22 @@ urlpatterns = [
     # Management
     path(
         route='search/',
-        view=views.search_music,
+        view=views.search,
         name='search'
     ),
     path(
         route='my-favorites/',
-        view=views.favorite_music,
+        view=views.favorite,
         name='myFavorite'
     ),
     path(
         route='playMusic/',
-        view=views.play_music,
+        view=views.play,
         name='playMusic'
     ),
     path(
         route='detailMusic/',
-        view=views.detali_music,
-        name='detailMusic'
+        view=views.myLibrary,
+        name='myLibrary'
     ),
 ]

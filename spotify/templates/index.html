@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
 
-    {% block head_content %}
-    {% endblock %}
-
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
@@ -43,7 +40,7 @@
                                 </a>
                             </li>
                             <li class="navBar-item">
-                                <a href="{% url 'music:detailMusic' %}" class="navBar-link">
+                                <a href="{% url 'music:myLibrary' %}" class="navBar-link">
                                     <i class="fa fa-list icon"></i> Tu Biblioteca
                                 </a>
                             </li>
@@ -265,10 +262,6 @@
                 </div>
                 <div class="App__main-view">
 
-                  {% for item in data %}
-                    <span style="background-color: olivedrab">{{ item.description }}</span>
-                  {% endfor %}
-
     <main class="search__container">
       <section class="search__main">
         <div class="search__header">
@@ -317,6 +310,21 @@
               />
             </div>
           </div>
+
+          {% for item in data %}
+            <div class="genres card-2">
+            <h1>{{ item.artist }}</h1>
+            <div class="genres__cover">
+              <img
+                src="{{ item.image }}"
+                alt=""
+              />
+            </div>
+             <p>item.more_info</p>
+            </div>
+          {% endfor %}
+
+
           <div class="genres card-2">
             <h1>Top Hits</h1>
             <div class="genres__cover">

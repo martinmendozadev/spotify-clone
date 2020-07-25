@@ -59,27 +59,35 @@ def feed(request):
     data = [
         {
             'image': 'url',
-            'title': 'listName 1',
-            'description': 'description 1',
-            'followers': '0000'
+            'more_info': 'More text',
+            'artist': 'Artist Name',
+            'followers': '0000',
+            'gen': 'Rock',
+            'population': '000',
         },
         {
             'image': 'url',
-            'title': 'listName 2',
-            'description': 'description 2',
-            'followers': '0000'
+            'more_info': 'More text',
+            'artist': 'Artist Name',
+            'followers': '0000',
+            'gen': 'Rock',
+            'population': '000',
         },
         {
             'image': 'url',
-            'title': 'listName 3',
-            'description': 'description 3',
-            'followers': '0000'
+            'more_info': 'More text',
+            'artist': 'Artist Name',
+            'followers': '0000',
+            'gen': 'Rock',
+            'population': '000',
         },
         {
             'image': 'url',
-            'title': 'listName 4',
-            'description': 'description 4',
-            'followers': '0000'
+            'more_info': 'More text',
+            'artist': 'Artist Name',
+            'followers': '0000',
+            'gen': 'Rock',
+            'population': '000',
         },
     ]
 
