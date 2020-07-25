@@ -56,7 +56,6 @@ def get_info_by_album_name(album_name, token):
     header = {'Authorization': 'Bearer {}'.format(token)}
     search = requests.get(url_search, headers = header, params = search_params)
 
-
     print(search.status_code)
     result_search_album_name = search.json()
 
