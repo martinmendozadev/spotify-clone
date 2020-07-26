@@ -5,12 +5,10 @@
     <title>Favorites</title>
 </head>
 <body>
-  <h1>6. El usuario puede seleccionar su música favorita</h1>
+  <h1>6. El usuario puede seleccionar su música favoritas</h1>
 
-  {% for item in data %}
-     <span style="background-color: olivedrab">{{ item.title }} </span><br>
-    {{ item }} <br><br>
-
+  {% for item in my_favorites %}
+    {{ item }}<br><br>
    {% endfor %}
 
 </body>

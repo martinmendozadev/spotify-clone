@@ -17,6 +17,9 @@ class PlayLists(BaseModel):
         'music.TrackModel',
         on_delete=models.CASCADE,
     )
+    is_favorite = models.BooleanField(
+        default=False
+    )
 
     def __str__(self):
         """Return name PlayList"""

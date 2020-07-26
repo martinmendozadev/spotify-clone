@@ -2,6 +2,10 @@
 
 # Django
 from django.shortcuts import render
+from django.views.generic import ListView
+
+# Models
+from spotify.playLists.models import PlayLists
 
 
 def search(request):
@@ -35,6 +39,7 @@ def search(request):
     )
 
 
+"""
 def myLibrary(request):
     data = [
         {
@@ -67,7 +72,18 @@ def myLibrary(request):
         request=request,
         template_name='music/myLibrary.html',
         context={'data': data}
-    )
+    )"""
+
+
+class MyLibrary (ListView):
+    """Display list user favorite Library."""
+    model = PlayLists
+    context_object_name = 'MyLibrary'
+    template_name = 'music/myLibrary.html'
+
+    def get_queryset(self):
+        q = PlayLists.objects.filter(user__username=self.kwargs['username'])
+        return q
 
 
 def play(request):
@@ -89,6 +105,7 @@ def save():
     pass
 
 
+"""
 def favorite(request):
     data = [
         {
@@ -124,4 +141,15 @@ def favorite(request):
         request=request,
         template_name='music/favorites.html',
         context={'data': data}
-    )
+    )"""
+
+
+class Favorites (ListView):
+    """Display list user favorite songs."""
+    model = PlayLists
+    context_object_name = 'my_favorites'
+    template_name = 'music/favorites.html'
+
+    def get_queryset(self):
+        q = PlayLists.objects.filter(user__username=self.kwargs['username'], is_favorite=True)
+        return q
