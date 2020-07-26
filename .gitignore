@@ -277,4 +277,4 @@ spotify/media/
 .idea
 
 # Migrations
-spotify/users/migrations/
+spotify/**/migrations/
