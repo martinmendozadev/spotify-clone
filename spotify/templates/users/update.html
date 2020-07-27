@@ -8,7 +8,8 @@
       rel="stylesheet"
     />
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/overview-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/overview-page.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}" />
     <title>Vista General de la Cuenta - Spotify</title>
   </head>
   <body>
@@ -17,7 +18,10 @@
       <div class="container__nav">
         <div class="nav__logo">
           <a href="{% url 'users:feed' %}">
-            <img src="{% static 'images/Spotify_Logo_RGB_White.png' %}" alt="" />
+            <img
+              src="{% static 'images/Spotify_Logo_RGB_White.png' %}"
+              alt="Logo Spotify"
+            />
           </a>
         </div>
         <nav class="nav__contain">
@@ -28,14 +32,26 @@
             <li>|</li>
             <li>
               {% if user.picture %}
-              <img src="{{ user.picture.url }}" class="" height="50" />
-            {% else%}
-              <img src="{% static 'images/default-profile.png' %}" class="" height="50" />
-            {% endif %}
+              <img src="{{ user.picture.url }}" alt="Profile picture" />
+              {% else%}
+              <img
+                src="{% static 'images/default-profile.png' %}"
+                alt="Profile picture"
+              />
+              {% endif %}
             </li>
             <li>
-              Perfil
-              <i class="icon-circle-down"></i>
+              <a target="_blank"
+                >Perfil
+                <i class="icon-circle-down"></i>
+              </a>
+              <div class="services-submenu">
+                <div class="submenu-items">
+                  <a href="{% url 'users:logout' %}" type="submit"
+                    >Cerrar Sesión</a
+                  >
+                </div>
+              </div>
             </li>
           </ul>
         </nav>
@@ -48,10 +64,10 @@
       <aside class="account__container--menu">
         <div class="account__photo">
           {% if user.picture %}
-              <img src="{{ user.picture.url }}" class="" height="50" />
-            {% else%}
-              <img src="{% static 'images/default-profile.png' %}" class="" height="50" />
-            {% endif %}
+          <img src="{{ user.picture.url }}" />
+          {% else%}
+          <img src="{% static 'images/default-profile.png' %}" />
+          {% endif %}
         </div>
         <div class="account__blocks">
           <span class="account__blocks--line"></span>
@@ -128,96 +144,99 @@
           <h1>Perfil</h1>
         </div>
         <div class="account__description--profile-item">
-
-
-
-
-
-          <form action="{% url 'users:update' user.username %}" method="POST" enctype="multipart/form-data">
+          <!-------- Fix this section need stay into a form  ---->
+          <form
+            action="{% url 'users:update' user.username %}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             {% csrf_token %}
 
-            <div>
+            <div class="account__description--profile-item">
+              <label>Foto de perfil </label>
               {% if user.picture %}
-                <img src="{{ user.picture.url }}" height="50" />
+              <img src="{{ user.picture.url }}" />
               {% else%}
-                <img src="{% static 'images/default-profile.png' %}" height="50" />
+              <img
+                src="{% static 'images/default-profile.png' %}"
+                class=""
+                height="50"
+              />
               {% endif %}
-              <p><input type="file" name="picture"></p>
+              <p>
+                <input type="file" name="picture" />
+              </p>
             </div>
 
-            <div>
-              <label>First Name</label>
-              <input
-                      type="text"
-                      name="first_name"
-                      placeholder="First name"
-                      value="{% if form.errors %}{{ form.first_name.value }}{% else %}{{ user.first_name }}{% endif %}"
-              />
-              <div>
-                {% for error in form.first_name.errors %}
-                  {{ error }}
-                {% endfor%}
+            <div class="account__description--profile-item">
+              <label>Primer Nombre</label>
+              <div class="item-input">
+                <input
+                  type="text"
+                  name="first_name"
+                  placeholder="First name"
+                  value="{% if form.errors %}{{ form.first_name.value }}{% else %}{{ user.first_name }}{% endif %}"
+                />
+                <div class="">
+                  {% for error in form.first_name.errors %} {{ error }}
+                  {%endfor%}
+                </div>
               </div>
             </div>
 
-            <div>
-              <label>Last Name</label>
-              <input
-                      type="text"
-                      name="last_name"
-                      placeholder="Last name"
-                      value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ user.last_name }}{% endif %}"
-              />
-              <div>
-                {% for error in form.last_name.errors %}
-                  {{ error }}
-                {% endfor%}
+            <div class="account__description--profile-item">
+              <label>Apellidos</label>
+              <div class="item-input">
+                <input
+                  class=""
+                  type="text"
+                  name="last_name"
+                  placeholder="Last name"
+                  value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ user.last_name }}{% endif %}"
+                />
+                <div class="">
+                  {% for error in form.last_name.errors %} {{ error }}
+                  {%endfor%}
+                </div>
               </div>
             </div>
 
-            <div>
-              <label>Birthday</label>
-              <input
-                      type="text"
-                      name="birthday"
-                      placeholder="yy-mm-dd"
-                      value="{% if form.errors %}{{ form.birthday.value }}{% endif %}"
-              />
-              <div>
-                {% for error in form.birthday.errors %}
-                  {{ error }}
-                {% endfor%}
-                <p>Format for birthday is Year-Mount-Day</p>
+            <div class="account__description--profile-item">
+              <label>Fecha de Nacimiento <small>(aaaa-mm-dd)</small></label>
+              <div class="item-input">
+                <input
+                  class=""
+                  type="text"
+                  name="birthday"
+                  placeholder="Birthday"
+                  value="{% if form.errors %}{{ form.birthday.value }}{% else %}{{ user.birthday }}{% endif %}"
+                />
+                <div class="">
+                  {% for error in form.birthday.errors %} {{ error }}
+                  {%endfor%}
+                </div>
               </div>
             </div>
 
-            <div>
-              <label>Country</label>
-              <input
-                      type="text"
-                      name="country"
-                      placeholder="Country"
-                      value="{% if form.errors %}{{ form.country.value }}{% else %}{{ user.country }}{% endif %}"
-              />
-              <div>
-                {% for error in form.country.errors %}
-                  {{ error }}
-                {% endfor%}
+            <div class="account__description--profile-item">
+              <label>País</label>
+              <div class="item-input">
+                <input
+                  class=""
+                  type="text"
+                  name="country"
+                  placeholder="Country"
+                  value="{% if form.errors %}{{ form.country.value }}{% else %}{{ user.country }}{% endif %}"
+                />
+                <div class="">
+                  {% for error in form.country.errors %} {{ error }} {% endfor%}
+                </div>
               </div>
             </div>
-
-            <button type="submit">Update info</button>
+            <button type="submit" class="button__outline">Update info</button>
           </form>
-
-              <div style="background-color: darkred">
-                {% for error in form.errors %}
-                  {{ error }}
-                {% endfor%}
-              </div>
-
-
-
         </div>
+
         <div class="account__description--plan">
           <h1>Tu plan</h1>
         </div>
@@ -248,7 +267,10 @@
             fabricante del dispositivo.
           </p>
         </div>
-        <a href="{% url 'users:logout' %}" class="button__outline--session" type="submit"
+        <a
+          href="{% url 'users:logout' %}"
+          class="button__outline--session"
+          type="submit"
           >Cierra sesión en todas partes</a
         >
       </section>
@@ -260,7 +282,10 @@
         <div class="footer__margin--top"></div>
         <div class="footer__logo">
           <a href="https://open.spotify.com/">
-            <img src="{% static 'images/Spotify_Logo_RGB_White.png' %}" alt="" />
+            <img
+              src="{% static 'images/Spotify_Logo_RGB_White.png' %}"
+              alt=""
+            />
           </a>
         </div>
         <div class="footer__title--one">
@@ -338,4 +363,3 @@
     <!---------------- footer end ------------------------>
   </body>
 </html>
-

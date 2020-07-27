@@ -57,25 +57,16 @@ p {
 
 /*--------------* lateral menu and container * ---------------*/
 
-.search__container {
+/* .search__container {  ELIMINÓ JAVIER
   display: grid;
-  grid-template-columns: 232px 1fr;
+  grid-template-columns: 1fr;
   background-color: var(--color-black);
-}
-
-.lateral__menu {
-  display: grid;
-  position: fixed;
-  place-content: center;
-  width: 232px;
-  height: 90vh;
-  background: var(--background-account);
-}
+} */
 
 /*--------------* main search page  * ---------------*/
 
 .search__main {
-  grid-column-start: 2;
+  margin-left: 232px;
 }
 
 /*--------------* header search page  * ---------------*/
@@ -105,7 +96,7 @@ p {
   display: flex;
   align-items: center;
   background-color: var(--color-white);
-  width: 20em;
+  width: 400px;
   border-radius: 20px;
   padding: 5px;
 }
@@ -124,7 +115,7 @@ p {
   color: var(--color-black);
 }
 
-.search__header--img {
+.search__header--img a {
   display: flex;
   align-items: center;
   background: black;
@@ -133,7 +124,10 @@ p {
   font-weight: 600;
 }
 
-.search__header--img img {
+#img-profile {
+  object-fit: cover;
+  object-position: center center;
+  width: 35px;
   height: 35px;
   border-radius: 50%;
   margin-right: 10px;
@@ -144,7 +138,7 @@ p {
   font-size: 0.85em;
 }
 
-.search__header--img:hover {
+.search__header--img a:hover {
   background: var(--color-passive-hover);
   cursor: pointer;
 }
@@ -170,6 +164,7 @@ p {
 }
 
 .genres {
+  display: grid;
   border-radius: 5px;
   height: 200px;
   padding: 20px 0 0 20px;
@@ -199,7 +194,6 @@ p {
 
 .card-1 {
   background: var(--background-cards-red);
-  grid-column-start: 1;
 }
 
 .card-2 {
