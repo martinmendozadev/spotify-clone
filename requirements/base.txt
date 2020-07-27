@@ -23,3 +23,4 @@ celery==4.4.2
 flower==0.9.4
 
 # Scraping
+requests==2.24.0
