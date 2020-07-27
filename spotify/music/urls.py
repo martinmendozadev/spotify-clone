@@ -15,7 +15,7 @@ urlpatterns = [
         name='search'
     ),
     path(
-        route='favorites/<str:username>',
+        route='favorites/',
         view=views.Favorites.as_view(),
         name='myFavorite'
     ),
@@ -25,7 +25,7 @@ urlpatterns = [
         name='playMusic'
     ),
     path(
-        route='detailMusic/<str:username>',
+        route='myLibrary/',
         view=views.MyLibrary.as_view(),
         name='myLibrary'
     ),

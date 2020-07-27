@@ -2,6 +2,7 @@
 
 # Django
 from django.shortcuts import redirect
+from django.urls import reverse
 
 # Models
 from spotify.music.models import TrackModel
@@ -48,9 +49,14 @@ def add_in_user_library(user, track):
 def save_track_in_db(title):
     global TRACK
     data_track = get_info_by_track_name(title, TOKEN)
-    TRACK = TrackModel.objects.create(artist='Artist Test', title=title, album='Album Test', duration='00:00:00')
+    TRACK = TrackModel.objects.create(artist='Artist Test 3', title=title, album='Album Test 3', duration='00:00:00')
 
 
 def obtain_token():
     global TOKEN
     TOKEN = get_token()
+
+
+def add_favorite_track(request, title):
+    PlayLists.objects.filter(user=request.user, track__title=title).update(is_favorite=True)
+    return redirect('music:myLibrary')

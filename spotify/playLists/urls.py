@@ -14,4 +14,9 @@ urlpatterns = [
         view=views.add_track,
         name='addTrack'
     ),
+    path(
+        route='addFavorite/<str:title>',
+        view=views.add_favorite_track,
+        name='addFavorite'
+    ),
 ]

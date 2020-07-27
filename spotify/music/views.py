@@ -11,10 +11,10 @@ from spotify.playLists.models import PlayLists
 def search(request):
     """View search"""
     track = {
-        'title': 'Artist Test',
-        'album': 'Album Title',
-        'artist': 'Artist Name',
-        'duration': '00:00',
+        'title': 'Artist Test 2',
+        'album': 'Album Title 2',
+        'artist': 'Artist Name 2',
+        'duration': '00:00:00',
     }
     artist = {
         'artist': 'Artist Name',
@@ -82,7 +82,7 @@ class MyLibrary (ListView):
     template_name = 'music/myLibrary.html'
 
     def get_queryset(self):
-        q = PlayLists.objects.filter(user__username=self.kwargs['username'])
+        q = PlayLists.objects.filter(user__username=self.request.user.username)
         return q
 
 
@@ -151,5 +151,5 @@ class Favorites (ListView):
     template_name = 'music/favorites.html'
 
     def get_queryset(self):
-        q = PlayLists.objects.filter(user__username=self.kwargs['username'], is_favorite=True)
+        q = PlayLists.objects.filter(user__username=self.request.user.username, is_favorite=True)
         return q

@@ -37,7 +37,7 @@
                                 </a>
                             </li>
                             <li class="navBar-item">
-                                <a href="{% url 'music:myLibrary' user.username %}" class="navBar-link">
+                                <a href="{% url 'music:myLibrary' %}" class="navBar-link">
                                     <i class="fa fa-list icon"></i> Tu Biblioteca
                                 </a>
                             </li>
@@ -53,7 +53,7 @@
                                         </button>
                                     </div>
                                     <div class="App__playlist-likes">
-                                        <a href="{% url 'music:myFavorite' user.username %}" class="">
+                                        <a href="{% url 'music:myFavorite' %}" class="">
                                             <i class="fa fa-heart icon"></i>
                                             <span>Tus Me Gusta</span>
                                         </a>
@@ -318,7 +318,7 @@
                                 </div>
                             </div>
 
-                            {% for item in data %}
+                            {% for item in my_favorites %}
                             <div class="table-content">
                                 <div class="table-content__text">
                                     <div class="play-icon">
@@ -328,22 +328,24 @@
                                 <div class="table-content__text">
                                     <!-- like -->
                                     <div class="table-content__text--like">
-                                        {% if item.is_favorite == 'true' %}
-                                        <i class="fa fa-heart"></i> {% else %}
-                                        <i class="fa fa-heart-o"></i> {% endif %}
+                                        {% if item.track.is_favorite %}
+                                          <i class="fa fa-heart-o"></i>
+                                        {% else %}
+                                          <i class="fa fa-heart"></i>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="table-content__text">
-                                    <p>{{ item.title }}</p>
+                                    <p>{{ item.track.title }}</p>
                                 </div>
                                 <div class="table-content__text">
-                                    <p>{{ item.artist }}</p>
+                                    <p>{{ item.track.artist }}</p>
                                 </div>
                                 <div class="table-content__text">
-                                    <p>{{ item.album }}</p>
+                                    <p>{{ item.track.album }}</p>
                                 </div>
                                 <div class="table-content__text">
-                                    <p>{{ item.duration }}</p>
+                                    <p>{{ item.track.duration }}</p>
                                 </div>
                             </div>
                             {% endfor %}
