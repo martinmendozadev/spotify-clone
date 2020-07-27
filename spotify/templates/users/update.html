@@ -41,8 +41,17 @@
               {% endif %}
             </li>
             <li>
-              Perfil
-              <i class="icon-circle-down"></i>
+              <a target="_blank"
+                >Perfil
+                <i class="icon-circle-down"></i>
+              </a>
+              <div class="services-submenu">
+                <div class="submenu-items">
+                  <a href="{% url 'users:logout' %}" type="submit"
+                    >Cerrar Sesión</a
+                  >
+                </div>
+              </div>
             </li>
           </ul>
         </nav>

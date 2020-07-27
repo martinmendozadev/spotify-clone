@@ -75,8 +75,36 @@ body p {
   border-radius: 50%;
 }
 
-.nav__contain i {
-  margin-left: 5px;
+.nav__contain ul {
+  display: flex;
+  align-items: center;
+}
+
+.services-submenu {
+  background: var(--color-white);
+  padding: 10px 0;
+  line-height: 1.5em;
+  position: absolute;
+  display: none;
+  left: 80%;
+  z-index: 1;
+}
+
+nav ul li:hover .services-submenu {
+  display: block;
+}
+
+.submenu-items a {
+  width: 120px;
+  font-weight: 600;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-green);
+}
+
+.submenu-items li {
+  list-style: none;
 }
 
 /*--------------* account menu * ---------------*/
