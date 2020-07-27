@@ -1,8 +1,8 @@
 
-import requests
-import json
-import time
-from random import randint
+import requests #2.22.0
+import json #2.0.9
+import time #no tiene
+from random import randint #no tiene
 
 
 def get_token():
@@ -15,19 +15,9 @@ def get_token():
     return r.json()['access_token']
 
 
-def get_info_by_artist_id(artist_id, token):
-    ep_artist = '/artists/{artist_id}'
-    url_base = 'https://api.spotify.com/v1'
-    header = {'Authorization': 'Bearer {}'.format(token)}
-    r = requests.get(url_base+ep_artist.format(artist_id = artist_id), headers = header)
-    info_by_artist = r.json()
 
-    return info_by_artist
-
-
-def get_info_by_artist_name(artist_name, token):
+def get_info_by_artist_name(token):
     random_number = randint(0,1995)
-    artist_name = artist_name.replace(' ', '+')
     url_search = 'https://api.spotify.com/v1/search'
     search_params = {'q':'year:0000-9999', 'type':'artist', 'market':'MX', 'limit':4, 'offset':random_number}
     search_params_pre = {'q':'year:0000-9999', 'type':'artist', 'market':'MX'}
@@ -38,14 +28,70 @@ def get_info_by_artist_name(artist_name, token):
     if search.status_code == 200:
         result_search_artist_name = search.json()
 
-        result ={'image_url': 'none','artist': 'none', 'followers': 0, 'genres':'none', 'popularity':0}
-        result['image_url'] = result_search_artist_name['artists']['items'][0]['images'][1]['url']
-        result['artist'] = result_search_artist_name['artists']['items'][0]['name']
-        result['followers'] = result_search_artist_name['artists']['items'][0]['followers']['total']
-        result['genres'] = result_search_artist_name['artists']['items'][0]['genres'][0]
-        result['popularity']= result_search_artist_name['artists']['items'][0]['popularity']
-        result_json =json.dumps(result)
-        return result_json
+        result ={
+            'artist_0':{
+                        'image_url': 'none',
+                        'artist': 'none', 
+                        'followers': 0, 
+                        'genres':'none', 
+                        'popularity':0},
+            'artist_1':{
+                        'image_url': 'none',
+                        'artist': 'none', 
+                        'followers': 0, 
+                        'genres':'none', 
+                        'popularity':0},
+            'artist_2':{
+                        'image_url': 'none',
+                        'artist': 'none', 
+                        'followers': 0, 
+                        'genres':'none', 
+                        'popularity':0},
+            'artist_3':{
+                        'image_url': 'none',
+                        'artist': 'none', 
+                        'followers': 0, 
+                        'genres':'none', 
+                        'popularity':0}
+                }
+        try:
+            result['artist_0']['image_url'] = result_search_artist_name['artists']['items'][0]['images'][1]['url']
+            result['artist_0']['artist'] = result_search_artist_name['artists']['items'][0]['name']
+            result['artist_0']['followers'] = result_search_artist_name['artists']['items'][0]['followers']['total']
+            result['artist_0']['genres'] = result_search_artist_name['artists']['items'][0]['genres'][0]
+            result['artist_0']['popularity']= result_search_artist_name['artists']['items'][0]['popularity']
+        except IndexError as err:
+            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
+
+        try:
+            result['artist_1']['image_url'] = result_search_artist_name['artists']['items'][1]['images'][1]['url']
+            result['artist_1']['artist'] = result_search_artist_name['artists']['items'][1]['name']
+            result['artist_1']['followers'] = result_search_artist_name['artists']['items'][1]['followers']['total']
+            result['artist_1']['genres'] = result_search_artist_name['artists']['items'][1]['genres'][0]
+            result['artist_1']['popularity']= result_search_artist_name['artists']['items'][1]['popularity']
+        except IndexError as err:
+            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
+        
+        try:
+            result['artist_2']['image_url'] = result_search_artist_name['artists']['items'][2]['images'][1]['url']
+            result['artist_2']['artist'] = result_search_artist_name['artists']['items'][2]['name']
+            result['artist_2']['followers'] = result_search_artist_name['artists']['items'][2]['followers']['total']
+            result['artist_2']['genres'] = result_search_artist_name['artists']['items'][2]['genres'][0]
+            result['artist_2']['popularity']= result_search_artist_name['artists']['items'][2]['popularity']
+        except IndexError as err:
+            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
+
+        try:
+            result['artist_3']['image_url'] = result_search_artist_name['artists']['items'][3]['images'][1]['url']
+            result['artist_3']['artist'] = result_search_artist_name['artists']['items'][3]['name']
+            result['artist_3']['followers'] = result_search_artist_name['artists']['items'][3]['followers']['total']
+            result['artist_3']['genres'] = result_search_artist_name['artists']['items'][3]['genres'][0]
+            result['artist_3']['popularity']= result_search_artist_name['artists']['items'][3]['popularity']
+        except IndexError as err:
+            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
+
+        result_artists_json =json.dumps(result)
+        return result_artists_json
 
     else:
         print(search.status_code)
@@ -53,95 +99,77 @@ def get_info_by_artist_name(artist_name, token):
     
 
 
-def get_info_by_album_name(album_name, token):
-    album_name = album_name.replace(' ', '+')
+
+def get_info_by_search_name(search_name, token):
+    search_name = search_name.replace(' ', '+')
     url_search = 'https://api.spotify.com/v1/search'
-    search_params = {'q': album_name, 'type':'album', 'market':'MX', 'limit':1}
-    header = {'Authorization': 'Bearer {}'.format(token)}
-    search = requests.get(url_search, headers = header, params = search_params)
-
-    print(search.status_code)
-    result_search_album_name = search.json()
-
-    return result_search_album_name
-
-
-def get_info_by_track_name(track_name, token):
-    track_name = track_name.replace(' ', '+')
-    url_search = 'https://api.spotify.com/v1/search'
-    search_params = {'q': track_name, 'type':'track', 'market':'MX', 'limit':1}
+    search_params = {'q': search_name, 'type':'track,artist,album', 'market':'MX', 'limit':1}
     header = {'Authorization': 'Bearer {}'.format(token)}
     search = requests.get(url_search, headers = header, params = search_params)
 
     if search.status_code == 200:
-        result_search_track_name = search.json()
+        result_search_name = search.json()
 
-        result ={'image_url':'none','title': 'none','artist': 'none', 'album':'none', 'duration':0}
-        result['image_url'] = result_search_track_name['tracks']['items'][0]['album']['images'][1]['url']
-        result['title'] = result_search_track_name['tracks']['items'][0]['name']
-        result['artist'] = result_search_track_name['tracks']['items'][0]['artists'][0]['name']
-        result['album'] = result_search_track_name['tracks']['items'][0]['album']['name']
-        duration_time = result_search_track_name['tracks']['items'][0]['duration_ms']
-        result['duration'] = time.strftime("%M:%S", time.gmtime(duration_time/1000))
-        result_json =json.dumps(result)
-        return result_json
+        result ={
+                'track':{
+                        'image_url':'none',
+                        'title': 'none',
+                        'artist': 'none', 
+                        'album':'none', 
+                        'duration':0
+                        },
+                'artist':{
+                        'image_url': 'none',
+                        'artist': 'none', 
+                        'followers': 0, 
+                        'genres':'none', 
+                        'popularity':0
+                        },
+                'album':{
+                        'image_url': 'none',
+                        'name': 'none',
+                        'artist': 'none',
+                        'release_date': 'none'
+                        }
+                }
+
+        
+        result['track']['image_url'] = result_search_name['tracks']['items'][0]['album']['images'][1]['url']
+        result['track']['title'] = result_search_name['tracks']['items'][0]['name']
+        result['track']['artist'] = result_search_name['tracks']['items'][0]['artists'][0]['name']
+        result['track']['album'] = result_search_name['tracks']['items'][0]['album']['name']
+        duration_time = result_search_name['tracks']['items'][0]['duration_ms']
+        result['track']['duration'] = time.strftime("%M:%S", time.gmtime(duration_time/1000))
+
+        try:
+            result['artist']['image_url'] = result_search_name['artists']['items'][0]['images'][1]['url']
+            result['artist']['artist'] = result_search_name['artists']['items'][0]['name']
+            result['artist']['followers'] = result_search_name['artists']['items'][0]['followers']['total']
+            result['artist']['genres'] = result_search_name['artists']['items'][0]['genres'][0]
+            result['artist']['popularity']= result_search_name['artists']['items'][0]['popularity']
+
+        except IndexError as err:
+            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
+
+        
+        result['album']['image_url'] = result_search_name['albums']['items'][0]['images'][1]['url']
+        result['album']['name'] = result_search_name['albums']['items'][0]['name']
+        result['album']['artist'] = result_search_name['albums']['items'][0]['artists'][0]['name']
+        result['album']['release_date']= result_search_name['albums']['items'][0]['release_date']
+
+
+        result_name_json =json.dumps(result)
+        return result_name_json
 
     else:
+        print(search.status_code)
         print('Request invalid')
-
-
-
-def get_info_by_playlist_name(playlist_name, token):
-    playlist_name = playlist_name.replace(' ', '+')
-    url_search = 'https://api.spotify.com/v1/search'
-    search_params = {'q': playlist_name, 'type':'playlist', 'market':'MX', 'limit':1}
-    header = {'Authorization': 'Bearer {}'.format(token)}
-    search = requests.get(url_search, headers = header, params = search_params)
-
-    print(search.status_code)
-    result_search_playlist_name = search.json()
-
-    return result_search_playlist_name
-
-
-def get_info_by_show_name(show_name, token):
-    show_name = show_name.replace(' ', '+')
-    url_search = 'https://api.spotify.com/v1/search'
-    search_params = {'q': show_name, 'type':'show', 'market':'MX', 'limit':1}
-    header = {'Authorization': 'Bearer {}'.format(token)}
-    search = requests.get(url_search, headers = header, params = search_params)
-
-    print(search.status_code)
-    result_search_show_name = search.json()['tracks']['items']['name']
-
-    return result_search_show_name
-
-
-def get_info_search_bar(looking_for, token):
-    looking_for = looking_for.replace(' ', '+')
-    url_search = 'https://api.spotify.com/v1/search'
-    search_params = { 'q': looking_for,'type':'track,artist,album','market':'MX', 'limit':1, 'offset':0}
-    header = {'Authorization': 'Bearer {}'.format(token)}
-    search = requests.get(url_search, headers = header, params = search_params)
-
-    print(search.status_code)
-    result_search_bar = search.json()
-
-    return result_search_bar
-
 
 
 
 if __name__ == '__main__':
 
     token = get_token()
-    """looking_for = input('Que artista buscas? ')
-    print(get_info_search_bar(looking_for, token)) """
-    """track_name = input('Que cancion buscas? ')
-    print(get_info_by_track_name(track_name, token)) """
-    artist_name = input('Que artista buscas? ').replace(' ', '+')
-    print(get_info_by_artist_name(artist_name, token))
-    """playlist_name = input('Que playlist buscas? ').replace(' ', '+')
-    print(get_info_by_playlist_name(playlist_name, token))
-    show_name = input('Que show buscas? ').replace(' ', '+')
-    print(get_info_by_show_name(show_name, token)) """
+    search_name = input('Qué buscas? ')
+    print(get_info_by_search_name(search_name, token))
+    """print(get_info_by_artist_name(token)) """
