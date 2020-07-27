@@ -22,5 +22,11 @@ class PlayLists(BaseModel):
     )
 
     def __str__(self):
-        """Return name PlayList"""
-        return f'{self.user} -> {self.track}'
+        """Return user PlayList"""
+        return (
+            f"'username': {self.user}, "
+            f"'is_favorite': {self.is_favorite}, "
+            f"'title': {self.track.title}, "
+            f"'album': {self.track.album}, "
+            f"'duration': {self.track.duration}"
+        )

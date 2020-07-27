@@ -28,8 +28,8 @@ class User(BaseModel, AbstractUser):
         default=True,
         help_text='Set to true when the user have verified its email address.'
     )
-    birthdate = models.DateField(
-        'Birthdate',
+    birthday = models.DateField(
+        'birthday',
         blank=True,
         null=True,
     )

@@ -130,86 +130,92 @@
         <div class="account__description--profile-item">
 
 
-        <!-------- Fix this section need stay into a form  ---------------------------------------------------------------------->
+
+
+
           <form action="{% url 'users:update' user.username %}" method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
+            {% csrf_token %}
 
-          <div class="media">
-            {% if user.picture %}
-              <img src="{{ user.picture.url }}" class="" height="50" />
-            {% else%}
-              <img src="{% static 'images/default-profile.png' %}" class="" height="50" />
-            {% endif %}
-            <p class="ml-4"><input type="file" name="picture"></p>
-          </div>
-
-
-          <div class="">
-            <label>First Name</label>
-            <input
-                    class=""
-                    type="text"
-                    name="first_name"
-                    placeholder="First name"
-                    value="{% if form.errors %}{{ form.first_name.value }}{% else %}{{ user.first_name }}{% endif %}"
-            />
-            <div class="">
-              {% for error in form.first_name.errors %}
-                {{ error }}
-              {% endfor%}
+            <div>
+              {% if user.picture %}
+                <img src="{{ user.picture.url }}" height="50" />
+              {% else%}
+                <img src="{% static 'images/default-profile.png' %}" height="50" />
+              {% endif %}
+              <p><input type="file" name="picture"></p>
             </div>
-          </div>
 
-          <div class="">
-            <label>Last Name</label>
-            <input
-                    class=""
-                    type="text"
-                    name="last_name"
-                    placeholder="Last name"
-                    value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ user.last_name }}{% endif %}"
-            />
-            <div class="">
-              {% for error in form.last_name.errors %}
-                {{ error }}
-              {% endfor%}
+            <div>
+              <label>First Name</label>
+              <input
+                      type="text"
+                      name="first_name"
+                      placeholder="First name"
+                      value="{% if form.errors %}{{ form.first_name.value }}{% else %}{{ user.first_name }}{% endif %}"
+              />
+              <div>
+                {% for error in form.first_name.errors %}
+                  {{ error }}
+                {% endfor%}
+              </div>
             </div>
-          </div>
 
-          <div class="">
-            <label>Birthdate</label>
-            <input
-                    class=""
-                    type="text"
-                    name="birthdate"
-                    placeholder="Birthdate"
-                    value="{% if form.errors %}{{ form.birthdate.value }}{% else %}{{ user.birthdate }}{% endif %}"
-            />
-            <div class="">
-              {% for error in form.birthdate.errors %}
-                {{ error }}
-              {% endfor%}
+            <div>
+              <label>Last Name</label>
+              <input
+                      type="text"
+                      name="last_name"
+                      placeholder="Last name"
+                      value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ user.last_name }}{% endif %}"
+              />
+              <div>
+                {% for error in form.last_name.errors %}
+                  {{ error }}
+                {% endfor%}
+              </div>
             </div>
-          </div>
 
-          <div class="">
-            <label>Country</label>
-            <input
-                    class=""
-                    type="text"
-                    name="country"
-                    placeholder="Country"
-                    value="{% if form.errors %}{{ form.country.value }}{% else %}{{ user.country }}{% endif %}"
-            />
-            <div class="">
-              {% for error in form.country.errors %}
-                {{ error }}
-              {% endfor%}
+            <div>
+              <label>Birthday</label>
+              <input
+                      type="text"
+                      name="birthday"
+                      placeholder="yy-mm-dd"
+                      value="{% if form.errors %}{{ form.birthday.value }}{% endif %}"
+              />
+              <div>
+                {% for error in form.birthday.errors %}
+                  {{ error }}
+                {% endfor%}
+                <p>Format for birthday is Year-Mount-Day</p>
+              </div>
             </div>
-          </div>
 
-          <button type="submit" class="button__outline">Update info</button>
-        </form>
+            <div>
+              <label>Country</label>
+              <input
+                      type="text"
+                      name="country"
+                      placeholder="Country"
+                      value="{% if form.errors %}{{ form.country.value }}{% else %}{{ user.country }}{% endif %}"
+              />
+              <div>
+                {% for error in form.country.errors %}
+                  {{ error }}
+                {% endfor%}
+              </div>
+            </div>
+
+            <button type="submit">Update info</button>
+          </form>
+
+              <div style="background-color: darkred">
+                {% for error in form.errors %}
+                  {{ error }}
+                {% endfor%}
+              </div>
+
+
 
         </div>
         <div class="account__description--plan">

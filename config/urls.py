@@ -12,5 +12,6 @@ urlpatterns = [
     # Local
     path('', include(('spotify.users.urls', 'users'), namespace='users')),
     path('music/', include(('spotify.music.urls', 'music'), namespace='music')),
+    path('playLists/', include(('spotify.playLists.urls', 'playList'), namespace='playLists')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

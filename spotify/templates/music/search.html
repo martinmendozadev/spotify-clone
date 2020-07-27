@@ -14,5 +14,13 @@
     <span style="background-color: olivedrab">{{ artist }}</span>
     <p>Search  album</p>
     <span style="background-color: olivedrab">{{ album }}</span>
+
+  <hr>
+
+    <form method="POST" action="{% url 'playList:addTrack' track.title %}" >
+      {% csrf_token %}
+      <input type="submit" name="add">
+    </form>
+
 </body>
 </html>

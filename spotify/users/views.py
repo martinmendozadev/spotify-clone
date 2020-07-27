@@ -46,7 +46,11 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
 
     template_name = 'users/update.html'
     model = User
-    fields = ['first_name', 'last_name', 'birthdate', 'country', 'picture']
+    fields = ['first_name', 'last_name', 'birthday', 'country', 'picture']
+
+    def get_object(self):
+        """Return user's profile."""
+        return self.request.user
 
     def get_success_url(self):
         """Return to user's profile."""
@@ -63,7 +67,7 @@ def feed(request):
             'artist': 'Artist Name',
             'followers': '0000',
             'gender': 'Rock',
-            'popular': '000',
+            'popular': '00:00:00',
         },
         {
             'image': 'url',
@@ -71,7 +75,7 @@ def feed(request):
             'artist': 'Artist Name',
             'followers': '0000',
             'gender': 'Rock',
-            'popular': '000',
+            'popular': '00:00:00',
         },
         {
             'image': 'url',
@@ -79,7 +83,7 @@ def feed(request):
             'artist': 'Artist Name',
             'followers': '0000',
             'gender': 'Rock',
-            'popular': '000',
+            'popular': '00:00:00',
         },
         {
             'image': 'url',
@@ -87,7 +91,7 @@ def feed(request):
             'artist': 'Artist Name',
             'followers': '0000',
             'gender': 'Rock',
-            'popular': '000',
+            'popular': '00:00:00',
         },
     ]
 
