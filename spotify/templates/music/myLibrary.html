@@ -1,17 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Detail a Play List</title>
+    <meta charset="UTF-8"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="icon" href=" {% static 'images/Platzi-master-logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/library.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/fonts/icomoon/style.css' %}" />
+    <meta name="theme-color" content="#563d7c">
+
 </head>
+
 <body>
+    <div id="main">
+        <div class="App">
+            <div class="App__container">
+                <div class="App__top-bar"></div>
+                <div class="App__nav-bar">
+                    <nav class="App__navBar-content">
+                        <div class="App__navBar-banner">
+                            <a href="#" class="logo">
+                                <img src="{% static '/images/logo.png' %}" alt="Spotify">
+                            </a>
+                        </div>
+                        <ul class="App__navBar-menu">
+                            <li class="navBar-item">
+                                <a href="#" class="navBar-link navBar-like--active">
+                                    <i class="fa fa-home icon"></i> Inicio
+                                </a>
+                            </li>
+                            <li class="navBar-item">
+                                <a href="{% url 'music:search' %}" class="navBar-link">
+                                    <i class="fa fa-search icon"></i> Buscar
+                                </a>
+                            </li>
+                            <li class="navBar-item">
+                                <a href="{% url 'music:myLibrary' user.username %}" class="navBar-link">
+                                    <i class="fa fa-list icon"></i> Tu Biblioteca
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="App__list">
+                            <div class="App__lists-content">
+                                <div class="App__playlists">
+                                    <h1 class="App__playlists-header">Playlists</h1>
+                                    <div class="App__playlist-create">
+                                        <button type="button">
+                                            <i class="fa fa-plus icon"></i>
+                                            <span>Crear playlist</span>
+                                        </button>
+                                    </div>
+                                    <div class="App__playlist-likes">
+                                        <a href="{% url 'music:myFavorite' user.username %}" class="">
+                                            <i class="fa fa-heart icon"></i>
+                                            <span>Tus Me Gusta</span>
+                                        </a>
+                                    </div>
+                                    <hr class="App__lists-divider">
+                                    <div class="App__lists_user">
+                                        <div class="content">
+                                            <ul>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Platzi Master Playlist - English
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Pearl Jam Radio
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Queen Radio
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Nu Metal Generation
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Éxitos México
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Pop Remix
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Qué oso los 90's
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Guitallas y boleros
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            ¡Viva latino!
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            En el trabajo
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class="listItem">
+                                                    <a href="#" class="listItem__link">
+                                                        <div class="listItem__text-wrapper">
+                                                            Workout
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="navBar-item App__download-item">
+                                <a href="#" class="navBar-link">
+                                    <i class="fa fa-arrow-circle-down icon"></i>
+                                    <span>Instalar aplicación</span>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="App__now-playing-bar">
+                    <footer class="now-playing-bar-container">
+                        <div class="now-playing-bar">
+                            <div class="now-playing-bar__left">
+                                <div class="now-playing">
+                                    <div class="now-playing-cover">
+                                        <div class="icon">
+                                            <img src="https://i.scdn.co/image/091ac8bdc0daef64f7a6a984c602ddf51c9cb186" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="now-playing-details">
+                                        <div class="now-playing-title">
+                                            <a href="{% url 'music:playMusic' %}" class="now-playing-track-link">BitâKora 5: Marcas en tiempos de COVID, Elon Musk y Bose.</a>
+                                        </div>
+                                        <div class="now-playing-artist">
+                                            <a href="#">Nadia Molina</a>
+                                        </div>
+                                    </div>
+                                    <div class="now-playing-control">
+                                        <button class="control-button fa fa-heart" Title="Guardar en Tus Me Gusta"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="now-playing-bar__center">
+                                <div class="player-controls">
+                                    <div class="player-control__buttons">
+                                        <div class="control-button-wrapper">
+                                            <button class="control-button control-button-suffle">
+                                                <i class="fa fa-random"></i>
+                                            </button>
+                                        </div>
+                                        <div class="control-button-wrapper">
+                                            <button class="control-button control-button-back">
+                                                <i class="fa fa-step-backward"></i>
+                                            </button>
+                                        </div>
+                                        <div class="control-button-wrapper">
+                                            <button class="control-button control-button-play control-button-circled">
+                                                <i class="fa fa-play"></i>
+                                            </button>
+                                        </div>
+                                        <div class="control-button-wrapper">
+                                            <button class="control-button control-button-forward">
+                                                <i class="fa fa-step-forward"></i>
+                                            </button>
+                                        </div>
+                                        <div class="control-button-wrapper">
+                                            <button class="control-button control-button-repeat">
+                                                <i class="fa fa-retweet"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="playback-bar">
+                                        <div class="playback-bar__progress-time">
+                                            6:50
+                                        </div>
+                                        <div class="progress-bar__progress">
+                                            <div class="middle-align progress-bar__bg">
+                                                <div class="progress-bar__fg_wrapper">
+                                                    <div class="progress-bar__fg"></div>
+                                                </div>
+                                                <button class="middle-align progress-bar__slider" style="left: 50%;"></button>
+                                            </div>
+                                        </div>
+                                        <div class="playback-bar__progress-time">
+                                            65:27
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="now-playing-bar__right">
+                                <div class="extraControls">
+                                    <div class="extraControls-list">
+                                        <div class="control-button-wrapper">
+                                            <button class="control-button">
+                                                <i class="fa fa-bars"></i>
+                                            </button>
+                                        </div>
+                                        <div class="extraControls-device">
+                                            <button class="control-button">
+                                                <i class="fa fa-desktop"></i>
+                                            </button>
+                                        </div>
+                                        <div class="extraControls-volumeBar">
+                                            <button class="control-button">
+                                                <i class="fa fa-volume-up"></i>
+                                            </button>
+                                            <div class="progress-bar__progress">
+                                                <div class="middle-align progress-bar__bg">
+                                                    <div class="progress-bar__fg_wrapper">
+                                                        <div class="progress-bar__fg"></div>
+                                                    </div>
+                                                    <button class="middle-align progress-bar__slider" style="100%"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <div class="App__main-view">
 
-  <h1>5. Pantalla de detalle de las listas de reproducción, canciones o albumes</h1>
-  <h2>5. El usuario puede escuchar la música que ha seleccionado</h2>
+                    <main class="search__container">
+                        <section class="search__main">
+                            <div class="search__header">
+                                <div class="search__header-input">
+                                    <span>
+                                      <i class="icon-circle-left"></i>
+                                    </span>
+                                    <span>
+                                      <i class="icon-circle-right"></i>
+                                    </span>
+                                    <div class="input-container">
+                                        <span class="search-icon">
+                                        <i class="icon-search"></i>
+                                      </span>
+                                        <input type="text" name="" id="" placeholder="Buscar Artistas, canciones o podcasts" />
+                                    </div>
+                                </div>
+                                <div class="search__header--img">
+                                    <a href="{% url 'users:update' user.username %}">
+                                  {% if user.picture %}
+                                    <img src="{{ user.picture.url }}" class="" height="50" />
+                                  {% else%}
+                                    <img src="{% static 'images/default-profile.png' %}" class="" height="50" />
+                                  {% endif %}
+                                  <span>{{ user.username }}</span>
+                                  <span>
+                                    <i class="icon-circle-down"></i>
+                                  </span></a>
+                                </div>
+                            </div>
+                            <div class="search__genres--title">
+                                <h2>Biblioteca</h2>
+                                <!--
 
 
-   {% for item in MyLibrary %}
-    {{ item }}<br><br>
-   {% endfor %}
+
+
+
+
+
+
+
+
+ -->
+                            </div>
+                            <div class="search__explore--container">
+                                <div class="table-title">
+                                    <p> #</p>
+                                </div>
+                                <div class="table-title">
+                                    <!-- like -->
+                                </div>
+                                <div class="table-title">
+                                    <p>Título</p>
+                                </div>
+                                <div class="table-title">
+                                    <!-- Duración -->
+                                    <i class="fa fa-clock-o icon"></i>
+                                </div>
+                            </div>
+
+                            {% for item in data %}
+                            <div class="table-content">
+                                <div class="table-content__text">
+                                    <div>
+                                        <p class="number">{{ item.num }}</p>
+                                        <div class="play-icon">
+                                            <i class="fa fa-play-circle-o"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="table-content__text">
+                                    <!-- like -->
+                                    <div class="table-content__text">
+                                        <form method="POST">
+                                            <button class="liked" type="submit" name="liked">
+                                              {% if item.is_favorite == 'true' %}
+                                              <i class="fa fa-heart"></i>
+                                              {% else %}
+                                              <i class="fa fa-heart-o"></i>
+                                              {% endif %}
+                                              </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="table-content__text">
+                                    <p>{{ item.title }}</p>
+                                </div>
+                                <div class="table-content__text">
+                                    <p>{{ item.duration }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://use.fontawesome.com/6f8a610621.js"></script>
 </body>
+
 </html>
