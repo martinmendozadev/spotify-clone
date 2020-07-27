@@ -2,9 +2,16 @@
 
 {% block head_content %}
     <title>Feed</title>
+
+  {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 {% endblock%}
 
 {% block container %}
+
+  <div class="search__genres--title">
+                  <h2>Tus géneros más escuchados</h2>
+                </div>
 
                 <div class="search__genres--container">
                   <!-- ------------------------- Card de Búsqueda  --------------------------- -->

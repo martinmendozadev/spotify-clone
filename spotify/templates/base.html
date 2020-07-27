@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     {% block head_content %}
 
-  {% endblock%}
-</head>
-<body>
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+    {% endblock%}
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
@@ -23,8 +16,9 @@
     />
     <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}" />
     <meta name="theme-color" content="#563d7c" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- ------------------------- Menú Lateral --------------------------- -->
 
     <div id="main">
@@ -34,13 +28,13 @@
           <div class="App__nav-bar">
             <nav class="App__navBar-content">
               <div class="App__navBar-banner">
-                <a href="#" class="logo">
+                <a href="{% url 'users:feed' %}" class="logo">
                   <img src="{% static '/images/logo.png' %}" alt="Spotify" />
                 </a>
               </div>
               <ul class="App__navBar-menu">
                 <li class="navBar-item">
-                  <a href="#" class="navBar-link navBar-like--active">
+                  <a href="{% url 'users:feed' %}" class="navBar-link navBar-like--active">
                     <i class="fa fa-home icon"></i> Inicio
                   </a>
                 </li>
@@ -331,9 +325,7 @@
                     ></a>
                   </div>
                 </div>
-                <div class="search__genres--title">
-                  <h2>Tus géneros más escuchados</h2>
-                </div>
+
 
 
                 {% block container %}
