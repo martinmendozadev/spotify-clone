@@ -20,7 +20,7 @@
           <a href="{% url 'users:feed' %}">
             <img
               src="{% static 'images/Spotify_Logo_RGB_White.png' %}"
-              alt=""
+              alt="Logo Spotify"
             />
           </a>
         </div>
@@ -32,12 +32,11 @@
             <li>|</li>
             <li>
               {% if user.picture %}
-              <img src="{{ user.picture.url }}" class="" height="50" />
+              <img src="{{ user.picture.url }}" alt="Profile picture" />
               {% else%}
               <img
                 src="{% static 'images/default-profile.png' %}"
-                class=""
-                height="50"
+                alt="Profile picture"
               />
               {% endif %}
             </li>
@@ -56,13 +55,9 @@
       <aside class="account__container--menu">
         <div class="account__photo">
           {% if user.picture %}
-          <img src="{{ user.picture.url }}" class="" height="50" />
+          <img src="{{ user.picture.url }}" />
           {% else%}
-          <img
-            src="{% static 'images/default-profile.png' %}"
-            class=""
-            height="50"
-          />
+          <img src="{% static 'images/default-profile.png' %}" />
           {% endif %}
         </div>
         <div class="account__blocks">
@@ -140,7 +135,7 @@
           <h1>Perfil</h1>
         </div>
         <div class="account__description--profile-item">
-          <!-------- Fix this section need stay into a form  ---------------------------------------------------------------------->
+          <!-------- Fix this section need stay into a form  ---->
           <form
             action="{% url 'users:update' user.username %}"
             method="POST"
@@ -148,9 +143,10 @@
           >
             {% csrf_token %}
 
-            <div class="media">
+            <div class="account__description--profile-item">
+              <label>Foto de perfil </label>
               {% if user.picture %}
-              <img src="{{ user.picture.url }}" class="" height="50" />
+              <img src="{{ user.picture.url }}" />
               {% else%}
               <img
                 src="{% static 'images/default-profile.png' %}"
@@ -158,68 +154,80 @@
                 height="50"
               />
               {% endif %}
-              <p class="ml-4"><input type="file" name="picture" /></p>
+              <p>
+                <input type="file" name="picture" />
+              </p>
             </div>
 
-            <div class="">
-              <label>First Name</label>
-              <input
-                class=""
-                type="text"
-                name="first_name"
-                placeholder="First name"
-                value="{% if form.errors %}{{ form.first_name.value }}{% else %}{{ user.first_name }}{% endif %}"
-              />
-              <div class="">
-                {% for error in form.first_name.errors %} {{ error }} {%endfor%}
+            <div class="account__description--profile-item">
+              <label>Primer Nombre</label>
+              <div class="item-input">
+                <input
+                  type="text"
+                  name="first_name"
+                  placeholder="First name"
+                  value="{% if form.errors %}{{ form.first_name.value }}{% else %}{{ user.first_name }}{% endif %}"
+                />
+                <div class="">
+                  {% for error in form.first_name.errors %} {{ error }}
+                  {%endfor%}
+                </div>
               </div>
             </div>
 
-            <div class="">
-              <label>Last Name</label>
-              <input
-                class=""
-                type="text"
-                name="last_name"
-                placeholder="Last name"
-                value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ user.last_name }}{% endif %}"
-              />
-              <div class="">
-                {% for error in form.last_name.errors %} {{ error }} {%endfor%}
+            <div class="account__description--profile-item">
+              <label>Apellidos</label>
+              <div class="item-input">
+                <input
+                  class=""
+                  type="text"
+                  name="last_name"
+                  placeholder="Last name"
+                  value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ user.last_name }}{% endif %}"
+                />
+                <div class="">
+                  {% for error in form.last_name.errors %} {{ error }}
+                  {%endfor%}
+                </div>
               </div>
             </div>
 
-            <div class="">
-              <label>Birthdate</label>
-              <input
-                class=""
-                type="text"
-                name="birthdate"
-                placeholder="Birthdate"
-                value="{% if form.errors %}{{ form.birthdate.value }}{% else %}{{ user.birthdate }}{% endif %}"
-              />
-              <div class="">
-                {% for error in form.birthdate.errors %} {{ error }} {% endfor%}
+            <div class="account__description--profile-item">
+              <label>Fecha de Nacimiento <small>(aaaa-mm-dd)</small></label>
+              <div class="item-input">
+                <input
+                  class=""
+                  type="text"
+                  name="birthdate"
+                  placeholder="Birthdate"
+                  value="{% if form.errors %}{{ form.birthdate.value }}{% else %}{{ user.birthdate }}{% endif %}"
+                />
+                <div class="">
+                  {% for error in form.birthdate.errors %} {{ error }}
+                  {%endfor%}
+                </div>
               </div>
             </div>
 
-            <div class="">
-              <label>Country</label>
-              <input
-                class=""
-                type="text"
-                name="country"
-                placeholder="Country"
-                value="{% if form.errors %}{{ form.country.value }}{% else %}{{ user.country }}{% endif %}"
-              />
-              <div class="">
-                {% for error in form.country.errors %} {{ error }} {% endfor%}
+            <div class="account__description--profile-item">
+              <label>País</label>
+              <div class="item-input">
+                <input
+                  class=""
+                  type="text"
+                  name="country"
+                  placeholder="Country"
+                  value="{% if form.errors %}{{ form.country.value }}{% else %}{{ user.country }}{% endif %}"
+                />
+                <div class="">
+                  {% for error in form.country.errors %} {{ error }} {% endfor%}
+                </div>
               </div>
             </div>
-
             <button type="submit" class="button__outline">Update info</button>
           </form>
         </div>
+
         <div class="account__description--plan">
           <h1>Tu plan</h1>
         </div>

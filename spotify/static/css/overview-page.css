@@ -3,6 +3,7 @@
   --color-green: #1db954;
   --color-white: #ffffff;
   --color-passive: #939395;
+  --color-passive-border: #dbdbdb;
   --font-spotify: "Montserrat", sans-serif;
   --background-account: linear-gradient(
     to bottom,
@@ -66,7 +67,10 @@ body p {
   font-weight: 600;
 }
 
-.nav__contain img {
+.nav__contain ul li img {
+  object-fit: cover;
+  object-position: center center;
+  width: 40px;
   height: 40px;
   border-radius: 50%;
 }
@@ -96,7 +100,12 @@ body p {
 }
 
 .account__photo img {
-  height: 70px;
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+  object-fit: cover;
+  object-position: center center;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 
@@ -167,15 +176,43 @@ body p {
 }
 
 .account__description--profile-item {
-  grid-column: 2 / span 1;
+  grid-column: 2 / span 2;
   grid-row: 3;
 }
 
-.account__description--profile-item ul li {
+.account__description--profile-item {
   padding: 20px 0 20px 0;
   list-style: none;
   color: var(--color-passive);
   border-bottom: 1px solid #dfdfdf;
+}
+
+.account__description--profile-item img {
+  object-fit: cover;
+  object-position: center center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  float: right;
+}
+
+.account__description--profile-item p {
+  padding-top: 20px;
+}
+
+.item-input {
+  margin-top: -5px;
+  float: right;
+}
+
+.item-input input {
+  padding: 5px 10px;
+  width: 400px;
+  font-size: 1em;
+  color: var(--color-black);
+  font-weight: 600;
+  border: 1px solid var(--color-passive-border);
+  border-radius: 5px;
 }
 
 .button__outline {
@@ -203,18 +240,18 @@ body p {
   transform: scale(1.05);
 }
 
-.account__description--profile-data {
+/* .account__description--profile-data {
   grid-column: 3 / span 1;
   grid-row: 3;
 }
 
-.account__description--profile-data ul li {
-  padding: 20px 0 20px 0;
+.account__description--profile-data input {
+  padding: 20px 0 20px 10px;
   list-style: none;
   color: var(--color-black);
   border-bottom: 1px solid #dfdfdf;
   font-weight: 600;
-}
+} */
 
 /*----------------* account plan * ------------------*/
 
