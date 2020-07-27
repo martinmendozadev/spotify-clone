@@ -10,6 +10,7 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
 
     # Local
-    path('', include(('spotify.test.urls', 'test'), namespace='test')),
+    path('', include(('spotify.users.urls', 'users'), namespace='users')),
+    path('music/', include(('spotify.music.urls', 'music'), namespace='music')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

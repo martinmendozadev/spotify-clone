@@ -1,0 +1,86 @@
+<html>
+<head>
+  <title>Sign up</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+</head>
+<body>
+<div>
+    <div>
+        <div class="head">
+            <a class="spotify-logo" title="Spotify" href="/"></a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <h2 class="text-center">Sign up for free to start listening.</h2>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="/" class="btn btn-block btn-facebook">Sign up with Facebook</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="divider">
+                    <span class="divider-title">or</span>
+                </div>
+            </div>
+        </div>
+        <form action="{% url 'users:signup' %}" method="POST">
+            {% csrf_token %} {{ form.non_field_errors }} {{ form.email.errors }}
+            <h3 class="text-center">Sign up with your email address</h3>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="{{ form.email.id_for_label }}" class="h3">What's your email?</label>
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="{{ form.password.id_for_label }}" class="h3">Create a password</label>
+                    {{ form.password }}
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="{{ form.password_confirmation.id_for_label }}" class="h3">Confirm your password</label>
+                    {{ form.password_confirmation }}
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    {{ form.username.errors }}
+                    <label for="{{ form.username.id_for_label }}" class="h3">What should we call you?</label>
+                    {{ form.username }}
+                </div>
+
+            </div>
+            <div class="row row-submit">
+                <div class="col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="thirdParty" class="checkbox">
+                          <span class="control-indicator"></span>
+                          <span class="">Share my registration data with Spotify's content providers for marketing purposes.</span>
+                      </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="text-center text-muted"><span class="">By clicking on Sign up, you agree to Spotify's <a href="/" target="_blank">Terms and Conditions of Use</a>.</span></p>
+                            <p class="text-center text-muted"><span class="">To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's <a href="/" target="_blank">Privacy Policy</a>.</span></p>
+                            <div class=""><button type="submit" class="btn btn-block btn-green">Sign up</button></div>
+                            <p class="text-center"><span class="">Have an account? <a href="{% url 'users:login' %}">Log in</a>.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -5,6 +5,7 @@ import time #no tiene
 from random import randint #no tiene
 
 
+
 def get_token():
 
     token_url = 'https://accounts.spotify.com/api/token'
@@ -164,5 +165,4 @@ def get_info_by_search_name(search_name, token):
     else:
         print(search.status_code)
         print('Request invalid')
-
 
