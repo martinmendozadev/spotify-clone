@@ -28,65 +28,77 @@ def get_info_by_artist_name(token):
     if search.status_code == 200:
         result_search_artist_name = search.json()
 
-        result ={
-            'artist_0':{
-                        'image_url': 'none',
-                        'artist': 'none', 
-                        'followers': 0, 
-                        'genres':'none', 
-                        'popularity':0},
-            'artist_1':{
-                        'image_url': 'none',
-                        'artist': 'none', 
-                        'followers': 0, 
-                        'genres':'none', 
-                        'popularity':0},
-            'artist_2':{
-                        'image_url': 'none',
-                        'artist': 'none', 
-                        'followers': 0, 
-                        'genres':'none', 
-                        'popularity':0},
-            'artist_3':{
-                        'image_url': 'none',
-                        'artist': 'none', 
-                        'followers': 0, 
-                        'genres':'none', 
-                        'popularity':0}
+        result =({
+                'image_url': 'none',
+                'more_info': 'none',
+                'artist': 'none', 
+                'followers': 0, 
+                'gen':'none', 
+                'population':0
+                },
+                {
+                'image_url': 'none',
+                'more_info': 'none',
+                'artist': 'none', 
+                'followers': 0, 
+                'gen':'none', 
+                'population':0
+                },
+                {
+                'image_url': 'none',
+                'more_info': 'none',
+                'artist': 'none', 
+                'followers': 0, 
+                'gen':'none', 
+                'population':0
+                },
+                {
+                'image_url': 'none',
+                'more_info': 'none',
+                'artist': 'none', 
+                'followers': 0, 
+                'gen':'none', 
+                'population':0
                 }
+                )
+        
         try:
-            result['artist_0']['image_url'] = result_search_artist_name['artists']['items'][0]['images'][1]['url']
-            result['artist_0']['artist'] = result_search_artist_name['artists']['items'][0]['name']
-            result['artist_0']['followers'] = result_search_artist_name['artists']['items'][0]['followers']['total']
-            result['artist_0']['genres'] = result_search_artist_name['artists']['items'][0]['genres'][0]
-            result['artist_0']['popularity']= result_search_artist_name['artists']['items'][0]['popularity']
+            result[0]['image_url'] = result_search_artist_name['artists']['items'][0]['images'][1]['url']
+            result[0]['more_info'] = result_search_artist_name['artists']['items'][0]['external_urls']['spotify']
+            result[0]['artist'] = result_search_artist_name['artists']['items'][0]['name']
+            result[0]['followers'] = result_search_artist_name['artists']['items'][0]['followers']['total']
+            result[0]['gen'] = result_search_artist_name['artists']['items'][0]['genres'][0]
+            result[0]['population']= result_search_artist_name['artists']['items'][0]['popularity']
         except IndexError as err:
             print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
 
         try:
-            result['artist_1']['image_url'] = result_search_artist_name['artists']['items'][1]['images'][1]['url']
-            result['artist_1']['artist'] = result_search_artist_name['artists']['items'][1]['name']
-            result['artist_1']['followers'] = result_search_artist_name['artists']['items'][1]['followers']['total']
-            result['artist_1']['genres'] = result_search_artist_name['artists']['items'][1]['genres'][0]
-            result['artist_1']['popularity']= result_search_artist_name['artists']['items'][1]['popularity']
+            result[1]['image_url'] = result_search_artist_name['artists']['items'][1]['images'][1]['url']
+            result[1]['more_info'] = result_search_artist_name['artists']['items'][1]['external_urls']['spotify']
+            result[1]['artist'] = result_search_artist_name['artists']['items'][1]['name']
+            result[1]['followers'] = result_search_artist_name['artists']['items'][1]['followers']['total']
+            result[1]['gen'] = result_search_artist_name['artists']['items'][1]['genres'][0]
+            result[1]['population']= result_search_artist_name['artists']['items'][1]['popularity']
         except IndexError as err:
             print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
         
         try:
-            result['artist_2']['image_url'] = result_search_artist_name['artists']['items'][2]['images'][1]['url']
-            result['artist_2']['artist'] = result_search_artist_name['artists']['items'][2]['name']
-            result['artist_2']['followers'] = result_search_artist_name['artists']['items'][2]['followers']['total']
-            result['artist_2']['genres'] = result_search_artist_name['artists']['items'][2]['genres'][0]
-            result['artist_2']['popularity']= result_search_artist_name['artists']['items'][2]['popularity']
+            result[2]['image_url'] = result_search_artist_name['artists']['items'][2]['images'][1]['url']
+            result[2]['more_info'] = result_search_artist_name['artists']['items'][2]['external_urls']['spotify']
+            result[2]['artist'] = result_search_artist_name['artists']['items'][2]['name']
+            result[2]['followers'] = result_search_artist_name['artists']['items'][2]['followers']['total']
+            result[2]['gen'] = result_search_artist_name['artists']['items'][2]['genres'][0]
+            result[2]['population']= result_search_artist_name['artists']['items'][2]['popularity']
         except IndexError as err:
             print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
 
         try:
-            result['artist_3']['image_url'] = result_search_artist_name['artists']['items'][3]['images'][1]['url']
-            result['artist_3']['artist'] = result_search_artist_name['artists']['items'][3]['name']
-            result['artist_3']['followers'] = result_search_artist_name['artists']['items'][3]['followers']['total']
-            result['artist_3']['genres'] = result_search_artist_name['artists']['items'][3]['genres'][0]
-            result['artist_3']['popularity']= result_search_artist_name['artists']['items'][3]['popularity']
+            result[3]['image_url'] = result_search_artist_name['artists']['items'][3]['images'][1]['url']
+            result[3]['more_info'] = result_search_artist_name['artists']['items'][3]['external_urls']['spotify']
+            result[3]['artist'] = result_search_artist_name['artists']['items'][3]['name']
+            result[3]['followers'] = result_search_artist_name['artists']['items'][3]['followers']['total']
+            result[3]['gen'] = result_search_artist_name['artists']['items'][3]['genres'][0]
+            result[3]['population']= result_search_artist_name['artists']['items'][3]['popularity']
         except IndexError as err:
             print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
 
@@ -95,8 +107,7 @@ def get_info_by_artist_name(token):
 
     else:
         print(search.status_code)
-        print('Request invalid')
-    
+        print('Request invalid')  
 
 
 
@@ -111,25 +122,25 @@ def get_info_by_search_name(search_name, token):
         result_search_name = search.json()
 
         result ={
-                'track':{
+                    'track':{
                         'image_url':'none',
                         'title': 'none',
                         'artist': 'none', 
                         'album':'none', 
                         'duration':0
                         },
-                'artist':{
+                    'artist':{
                         'image_url': 'none',
                         'artist': 'none', 
                         'followers': 0, 
-                        'genres':'none', 
-                        'popularity':0
+                        'gen':'none', 
+                        'population':0
                         },
-                'album':{
+                    'album':{
                         'image_url': 'none',
                         'name': 'none',
                         'artist': 'none',
-                        'release_date': 'none'
+                        'Mercado': 'LATAM'
                         }
                 }
 
@@ -145,8 +156,8 @@ def get_info_by_search_name(search_name, token):
             result['artist']['image_url'] = result_search_name['artists']['items'][0]['images'][1]['url']
             result['artist']['artist'] = result_search_name['artists']['items'][0]['name']
             result['artist']['followers'] = result_search_name['artists']['items'][0]['followers']['total']
-            result['artist']['genres'] = result_search_name['artists']['items'][0]['genres'][0]
-            result['artist']['popularity']= result_search_name['artists']['items'][0]['popularity']
+            result['artist']['gen'] = result_search_name['artists']['items'][0]['genres'][0]
+            result['artist']['population']= result_search_name['artists']['items'][0]['popularity']
 
         except IndexError as err:
             print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
@@ -155,7 +166,7 @@ def get_info_by_search_name(search_name, token):
         result['album']['image_url'] = result_search_name['albums']['items'][0]['images'][1]['url']
         result['album']['name'] = result_search_name['albums']['items'][0]['name']
         result['album']['artist'] = result_search_name['albums']['items'][0]['artists'][0]['name']
-        result['album']['release_date']= result_search_name['albums']['items'][0]['release_date']
+        #result['album']['release_date']= result_search_name['albums']['items'][0]['release_date']
 
 
         result_name_json =json.dumps(result)
@@ -164,5 +175,4 @@ def get_info_by_search_name(search_name, token):
     else:
         print(search.status_code)
         print('Request invalid')
-
 
