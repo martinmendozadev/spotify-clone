@@ -166,10 +166,3 @@ def get_info_by_search_name(search_name, token):
         print('Request invalid')
 
 
-
-if __name__ == '__main__':
-
-    token = get_token()
-    search_name = input('Qué buscas? ')
-    print(get_info_by_search_name(search_name, token))
-    """print(get_info_by_artist_name(token)) """
