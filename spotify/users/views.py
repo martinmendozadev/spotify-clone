@@ -64,8 +64,8 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
 
 @login_required()
 def feed(request):
-    data_feed = json.loads(get_info_by_artist_name(get_token()))
-    data = data_feed
+    # data_feed = json.loads(get_info_by_artist_name(get_token()))
+    data = None
 
     return render(
         request=request,

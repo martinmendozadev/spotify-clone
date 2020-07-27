@@ -327,21 +327,19 @@
 
                 <div class="search__genres--container">
                   <!-- ------------------------- Card de Búsqueda  --------------------------- -->
-
-                  {% for item in data %}
-                  <div class="genres card-1">
-                    <h1>{{ item.gen }}</h1>
-                    <div class="genres__cover">
-                      <img src="{{ item.image }}" alt="Artist Image" />
-                      <h3>{{ item.artist }}</h3>
-                      <h5>{{ item.followers }}</h5>
-                      <h5>{{ item.popular }}</h5>
-                      <p>{{ item.more_info }}</p>
+                  {% for item in data %}
+                    <div class="genres card-1">
+                      <h1>{{ item.gen }}</h1>
+                      <div class="genres__cover">
+                        <img src="{{ item.image_url }}" alt="Artist Image" />
+                        <h3>{{ item.artist }}</h3>
+                        <h5>{{ item.followers }}</h5>
+                        <h5>{{ item.population }}</h5>
+                        <p>{{ item.more_info }}</p>
+                      </div>
                     </div>
-                  </div>
-                  {% endfor %}
+                  {% endfor %}
                 </div>
-
                 <!-- ------------------------- Card de Explorar  --------------------------- -->
 
                 <div class="search__genres--subtitle">
