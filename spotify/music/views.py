@@ -11,9 +11,9 @@ from spotify.playLists.models import PlayLists
 def search(request):
     """View search"""
     track = {
-        'title': 'Artist Test 2',
-        'album': 'Album Title 2',
-        'artist': 'Artist Name 2',
+        'title': 'Diosa',
+        'album': 'Album Title 3',
+        'artist': 'Artist Name 3',
         'duration': '00:00:00',
     }
     artist = {

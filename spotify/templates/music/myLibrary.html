@@ -324,7 +324,7 @@
                                         <form method="POST" action="{% url 'playList:addFavorite' item.track.title %}">
                                           {% csrf_token %}
                                             <button class="liked" type="submit" name="liked">
-                                              {% if item.track.is_favorite %}
+                                              {% if item.is_favorite %}
                                                 <i class="fa fa-heart"></i>
                                               {% else %}
                                                 <i class="fa fa-heart-o"></i>

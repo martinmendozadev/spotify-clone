@@ -2,14 +2,14 @@
 
 # Django
 from django.shortcuts import redirect
-from django.urls import reverse
 
 # Models
 from spotify.music.models import TrackModel
 from spotify.playLists.models import PlayLists
 
 # Utils
-from spotify.scraping.scraping import get_info_by_track_name, get_token
+import json
+from spotify.scraping.scraping import get_info_by_search_name, get_token
 
 
 TOKEN = '123'
@@ -24,6 +24,7 @@ def add_track(request, title):
     if track_exist:
         add_in_user_library(user, TRACK)
     else:
+        obtain_token()
         save_track_in_db(title)
         add_in_user_library(user, TRACK)
 
@@ -48,8 +49,13 @@ def add_in_user_library(user, track):
 
 def save_track_in_db(title):
     global TRACK
-    data_track = get_info_by_track_name(title, TOKEN)
-    TRACK = TrackModel.objects.create(artist='Artist Test 3', title=title, album='Album Test 3', duration='00:00:00')
+    data_track = json.loads(get_info_by_search_name(title, TOKEN))
+    TRACK = TrackModel.objects.create(
+        artist=data_track['track']['artist'],
+        title=data_track['track']['title'],
+        album=data_track['track']['album'],
+        duration=data_track['track']['duration'],
+    )
 
 
 def obtain_token():
