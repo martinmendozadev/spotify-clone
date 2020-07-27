@@ -14,6 +14,10 @@ from spotify.users.forms import SignupForm
 # Models
 from spotify.users.models import User
 
+# Utils
+import json
+from spotify.scraping.scraping import get_info_by_artist_name, get_token
+
 
 class LoginView(auth_views.LoginView):
     """Login view."""
@@ -60,40 +64,8 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
 
 @login_required()
 def feed(request):
-    data = [
-        {
-            'image': 'url',
-            'more_info': 'More text',
-            'artist': 'Artist Name',
-            'followers': '0000',
-            'gender': 'Rock',
-            'popular': '00:00:00',
-        },
-        {
-            'image': 'url',
-            'more_info': 'More text',
-            'artist': 'Artist Name',
-            'followers': '0000',
-            'gender': 'Rock',
-            'popular': '00:00:00',
-        },
-        {
-            'image': 'url',
-            'more_info': 'More text',
-            'artist': 'Artist Name',
-            'followers': '0000',
-            'gender': 'Rock',
-            'popular': '00:00:00',
-        },
-        {
-            'image': 'url',
-            'more_info': 'More text',
-            'artist': 'Artist Name',
-            'followers': '0000',
-            'gender': 'Rock',
-            'popular': '00:00:00',
-        },
-    ]
+    data_feed = json.loads(get_info_by_artist_name(get_token()))
+    data = data_feed
 
     return render(
         request=request,

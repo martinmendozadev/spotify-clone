@@ -7,25 +7,17 @@ from django.views.generic import ListView
 # Models
 from spotify.playLists.models import PlayLists
 
+# Utils
+import json
+from spotify.scraping.scraping import get_info_by_search_name, get_token
+
 
 def search(request):
     """View search"""
-    track = {
-        'title': 'Diosa',
-        'album': 'Album Title 3',
-        'artist': 'Artist Name 3',
-        'duration': '00:00:00',
-    }
-    artist = {
-        'artist': 'Artist Name',
-        'followers': '000000',
-        'gene': 'Rock',
-        'popular': '000'
-    }
-    album = {
-        'artist': 'Artist Name',
-        'market': 'LATAM',
-    }
+    data_search = json.loads(get_info_by_search_name('La santa',  get_token()))
+    track = data_search['track']
+    artist = data_search['artist']
+    album = data_search['album']
     context = {
         'track': track,
         'artist': artist,
