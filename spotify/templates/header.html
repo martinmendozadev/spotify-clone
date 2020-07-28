@@ -1,0 +1,39 @@
+{% load static %}
+
+<div class="App__main-view">
+            <main class="search__container">
+              <section class="search__main">
+                <div class="search__header">
+                  <div class="search__header-input">
+                    <span>
+                      <i class="icon-circle-left"></i>
+                    </span>
+                    <span>
+                      <i class="icon-circle-right"></i>
+                    </span>
+                    <div class="input-container">
+                      <span class="search-icon">
+                        <i class="icon-search"></i>
+                      </span>
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        placeholder="Buscar Artistas, canciones o podcasts"
+                      />
+                    </div>
+                  </div>
+                  <div class="search__header--img">
+                    <a href="{% url 'users:update' user.username %}">
+                      {% if user.picture %}
+                      <img src="{{ user.picture.url }}" id="img-profile" />
+                      {% else%}
+                      <img
+                        src="{% static 'images/default-profile.png' %}"
+                        id="img-profile" />
+                      {% endif %}
+                      <span>{{ user.username }}</span>
+                      <span> <i class="icon-circle-down"></i> </span
+                    ></a>
+                  </div>
+                </div>

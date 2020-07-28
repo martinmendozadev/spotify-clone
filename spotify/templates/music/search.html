@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search Music</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block head_content %}
+    <title>Feed</title>
+  {% load static %}
+    <link rel="stylesheet" href="{#% static 'css/xxxxxxxxx.css' %#}">
+{% endblock%}
+
+{% block container %}
   <h1>4. El usuario puede realizar busquedas y el listado debe actualizarse con música relacionada con la búqueda</h1>
   <h2>4. Apartado de Búsquedas para que el usuario pueda buscar la música que le interesa escuchar</h2>
 
@@ -16,11 +18,11 @@
     <span style="background-color: olivedrab">{{ album }}</span>
 
   <hr>
+  <br>
 
     <form method="POST" action="{% url 'playList:addTrack' track.title %}" >
       {% csrf_token %}
       <input type="submit" name="add">
     </form>
 
-</body>
-</html>
+{% endblock %}

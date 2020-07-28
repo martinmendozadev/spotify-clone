@@ -1,0 +1,125 @@
+{% load static %}
+
+<div class="App__nav-bar">
+            <nav class="App__navBar-content">
+              <div class="App__navBar-banner">
+                <a href="{% url 'users:feed' %}" class="logo">
+                  <img src="{% static '/images/logo.png' %}" alt="Spotify" />
+                </a>
+              </div>
+              <ul class="App__navBar-menu">
+                <li class="navBar-item">
+                  <a href="{% url 'users:feed' %}" class="navBar-link navBar-like--active">
+                    <i class="fa fa-home icon"></i> Inicio
+                  </a>
+                </li>
+                <li class="navBar-item">
+                  <a href="{% url 'music:search' %}" class="navBar-link">
+                    <i class="fa fa-search icon"></i> Buscar
+                  </a>
+                </li>
+                <li class="navBar-item">
+                  <a href="{% url 'music:myLibrary' %}" class="navBar-link">
+                    <i class="fa fa-list icon"></i> Tu Biblioteca
+                  </a>
+                </li>
+              </ul>
+              <div class="App__list">
+                <div class="App__lists-content">
+                  <div class="App__playlists">
+                    <h1 class="App__playlists-header">Playlists</h1>
+                    <div class="App__playlist-create">
+                      <button type="button">
+                        <i class="fa fa-plus icon"></i>
+                        <span>Crear playlist</span>
+                      </button>
+                    </div>
+                    <div class="App__playlist-likes">
+                      <a href="{% url 'music:myFavorite' %}" class="">
+                        <i class="fa fa-heart icon"></i>
+                        <span>Tus Me Gusta</span>
+                      </a>
+                    </div>
+                    <hr class="App__lists-divider" />
+                    <div class="App__lists_user">
+                      <div class="content">
+                        <ul>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                Platzi Master Playlist - English
+                              </div>
+                            </a>
+                          </li>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                Pearl Jam Radio
+                              </div>
+                            </a>
+                          </li>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                Queen Radio
+                              </div>
+                            </a>
+                          </li>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                Nu Metal Generation
+                              </div>
+                            </a>
+                          </li>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                Éxitos México
+                              </div>
+                            </a>
+                          </li>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                Pop Remix
+                              </div>
+                            </a>
+                          </li>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                ¡Viva latino!
+                              </div>
+                            </a>
+                          </li>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                En el trabajo
+                              </div>
+                            </a>
+                          </li>
+                          <li class="listItem">
+                            <a href="#" class="listItem__link">
+                              <div class="listItem__text-wrapper">
+                                Workout
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="navBar-item App__download-item">
+                  <a href="#" class="navBar-link">
+                    <i class="fa fa-arrow-circle-down icon"></i>
+                    <span>Instalar aplicación</span>
+                  </a>
+                </div>
+              </div>
+            </nav>
+          </div>
