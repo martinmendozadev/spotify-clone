@@ -1,68 +1,61 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block head_content %}
+<title>Feed</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/favorites.css' %}"> {% endblock%} {% block container %}
 
-{% block head_content %}
-    <title>Feed</title>
-  {% load static %}
-    <link rel="stylesheet" href="{% static 'css/favorites.css' %}">
-{% endblock%}
+<div class="search__genres--title">
+    <h2>Canciones Favoritas</h2>
+</div>
 
-{% block container %}
-
-                            <div class="search__genres--title">
-                                <h2>Canciones Favoritas</h2>
-                            </div>
-
-                            <button class="play-button">
+<button class="play-button">
                                 Play
                             </button>
-                            <div class="search__explore--container">
-                                <div class="table-title">
-                                    <!-- play -->
-                                </div>
-                                <div class="table-title">
-                                    <!-- like -->
-                                </div>
-                                <div class="table-title">
-                                    <p>Título</p>
-                                </div>
-                                <div class="table-title">
-                                    <p>Artista</p>
-                                </div>
-                                <div class="table-title">
-                                    <p>Album</p>
-                                </div>
-                                <div class="table-title">
-                                    <!-- Duración -->
-                                    <i class="fa fa-clock-o icon"></i>
-                                </div>
-                            </div>
+<div class="search__explore--container">
+    <div class="table-title">
+        <!-- play -->
+    </div>
+    <div class="table-title">
+        <!-- like -->
+    </div>
+    <div class="table-title">
+        <p>Título</p>
+    </div>
+    <div class="table-title">
+        <p>Artista</p>
+    </div>
+    <div class="table-title">
+        <p>Album</p>
+    </div>
+    <div class="table-title">
+        <!-- Duración -->
+        <i class="fa fa-clock-o icon"></i>
+    </div>
+</div>
 
-                            {% for item in my_favorites %}
-                            <div class="table-content">
-                                <div class="table-content__text">
-                                    <div class="play-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </div>
-                                <div class="table-content__text">
-                                    <!-- like -->
-                                    <div class="table-content__text--like">
-                                      <i class="fa fa-heart"></i>
-                                    </div>
-                                </div>
-                                <div class="table-content__text">
-                                    <p>{{ item.track.title }}</p>
-                                </div>
-                                <div class="table-content__text">
-                                    <p>{{ item.track.artist }}</p>
-                                </div>
-                                <div class="table-content__text">
-                                    <p>{{ item.track.album }}</p>
-                                </div>
-                                <div class="table-content__text">
-                                    <p>{{ item.track.duration }}</p>
-                                </div>
-                            </div>
-                            {% endfor %}
-
-     {% endblock %}
+{% for item in my_favorites %}
+<div class="table-content">
+    <div class="table-content__text">
+        <div class="play-icon">
+            <i class="fa fa-play-circle-o"></i>
+        </div>
+    </div>
+    <div class="table-content__text">
+        <!-- like -->
+        <div class="table-content__text--like">
+            <i class="fa fa-heart"></i>
+        </div>
+    </div>
+    <div class="table-content__text">
+        <p>{{ item.track.title }}</p>
+    </div>
+    <div class="table-content__text">
+        <p>{{ item.track.artist }}</p>
+    </div>
+    <div class="table-content__text">
+        <p>{{ item.track.album }}</p>
+    </div>
+    <div class="table-content__text">
+        <p>{{ item.track.duration }}</p>
+    </div>
+</div>
+{% endfor %} {% endblock %}
