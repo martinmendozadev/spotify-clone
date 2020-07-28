@@ -1,232 +1,165 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block head_content %}
+<title>Feed</title>
 
-{% block head_content %}
-    <title>Feed</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+{% endblock%} {% block container %}
 
-  {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-{% endblock%}
+<div class="search__genres--title">
+  <h2>Tus géneros más escuchados</h2>
+</div>
 
-{% block container %}
+<div class="search__genres--container">
+  <!-- ------------------------- Card de Búsqueda  --------------------------- -->
+  {% for item in data %}
+  <div class="genres card-1">
+    <h1>{{ item.gen }}</h1>
+    <div class="genres__cover">
+      <img src="{{ item.image_url }}" alt="Artist Image" />
+      <h3>{{ item.artist }}</h3>
+      <h5><i class="icon-heart"></i> {{ item.followers }}</h5>
+      <h5><i class="icon-fire"></i> {{ item.population }}</h5>
+      <p>{{ item.more_info }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<!-- ------------------------- Card de Explorar  --------------------------- -->
 
-  <div class="search__genres--title">
-                  <h2>Tus géneros más escuchados</h2>
-                </div>
+<div class="search__genres--subtitle">
+  <h3>Explorar todo</h3>
+</div>
+<div class="search__explore--container">
+  <div class="explore all-card-1">
+    <h3>Podcasts</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/D_CmtYRW4AEfghh.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-2">
+    <h3>Especialmente para ti</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-3">
+    <h3>Lista de Éxitos</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/C_DyMVQWsAASnMK.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-4">
+    <h3>Novedades</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/EUHdBGGWsAAmh4O.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-5">
+    <h3>Descubrir</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CwcT0S9VQAALQ-_.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-6">
+    <h3>Black History Is Now</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/DmgH4ZAXgAE24Sd.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-7">
+    <h3>En casa</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg" alt="" />
+    </div>
+  </div>
+</div>
+<div class="search__explore--container">
+  <div class="explore all-card-1">
+    <h3>Higher Ground</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/D_CmtYRW4AEfghh.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-2">
+    <h3>Made in Colombia</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-3">
+    <h3>Bienestar</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/C_DyMVQWsAASnMK.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-4">
+    <h3>Concentración</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/EUHdBGGWsAAmh4O.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-5">
+    <h3>Pride</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CwcT0S9VQAALQ-_.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-6">
+    <h3>Relax</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/DmgH4ZAXgAE24Sd.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-7">
+    <h3>Cumbia</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg" alt="" />
+    </div>
+  </div>
+</div>
+<div class="search__explore--container">
+  <div class="explore all-card-1">
+    <h3>Estado de Ánimo</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/D_CmtYRW4AEfghh.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-2">
+    <h3>Para dormir</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-3">
+    <h3>Ejercicio</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/C_DyMVQWsAASnMK.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-4">
+    <h3>Regional Mexicana</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/EUHdBGGWsAAmh4O.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-5">
+    <h3>¡Fiesta!</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CwcT0S9VQAALQ-_.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-6">
+    <h3>Creadores de Tendencias</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/DmgH4ZAXgAE24Sd.jpg" alt="" />
+    </div>
+  </div>
+  <div class="explore all-card-7">
+    <h3>Décadas</h3>
+    <div class="explore__cover">
+      <img src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg" alt="" />
+    </div>
+  </div>
+</div>
 
-                <div class="search__genres--container">
-                  <!-- ------------------------- Card de Búsqueda  --------------------------- -->
-                  {% for item in data %}
-                    <div class="genres card-1">
-                      <h1>{{ item.gen }}</h1>
-                      <div class="genres__cover">
-                        <img src="{{ item.image_url }}" alt="Artist Image" />
-                        <h3>{{ item.artist }}</h3>
-                        <h5>{{ item.followers }}</h5>
-                        <h5>{{ item.population }}</h5>
-                        <p>{{ item.more_info }}</p>
-                      </div>
-                    </div>
-                  {% endfor %}
-                </div>
-                <!-- ------------------------- Card de Explorar  --------------------------- -->
-
-                <div class="search__genres--subtitle">
-                  <h3>Explorar todo</h3>
-                </div>
-                <div class="search__explore--container">
-                  <div class="explore all-card-1">
-                    <h3>Podcasts</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/D_CmtYRW4AEfghh.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-2">
-                    <h3>Especialmente para ti</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-3">
-                    <h3>Lista de Éxitos</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/C_DyMVQWsAASnMK.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-4">
-                    <h3>Novedades</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/EUHdBGGWsAAmh4O.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-5">
-                    <h3>Descubrir</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CwcT0S9VQAALQ-_.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-6">
-                    <h3>Black History Is Now</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/DmgH4ZAXgAE24Sd.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-7">
-                    <h3>En casa</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="search__explore--container">
-                  <div class="explore all-card-1">
-                    <h3>Higher Ground</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/D_CmtYRW4AEfghh.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-2">
-                    <h3>Made in Colombia</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-3">
-                    <h3>Bienestar</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/C_DyMVQWsAASnMK.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-4">
-                    <h3>Concentración</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/EUHdBGGWsAAmh4O.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-5">
-                    <h3>Pride</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CwcT0S9VQAALQ-_.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-6">
-                    <h3>Relax</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/DmgH4ZAXgAE24Sd.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-7">
-                    <h3>Cumbia</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="search__explore--container">
-                  <div class="explore all-card-1">
-                    <h3>Estado de Ánimo</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/D_CmtYRW4AEfghh.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-2">
-                    <h3>Para dormir</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-3">
-                    <h3>Ejercicio</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/C_DyMVQWsAASnMK.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-4">
-                    <h3>Regional Mexicana</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/EUHdBGGWsAAmh4O.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-5">
-                    <h3>¡Fiesta!</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CwcT0S9VQAALQ-_.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-6">
-                    <h3>Creadores de Tendencias</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/DmgH4ZAXgAE24Sd.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div class="explore all-card-7">
-                    <h3>Décadas</h3>
-                    <div class="explore__cover">
-                      <img
-                        src="https://pbs.twimg.com/media/CtcVNESWIAEYGWI.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {% endblock %}
+{% endblock %}
