@@ -7,22 +7,64 @@
 {% endblock%}
 
 {% block container %}
-  <h1>4. El usuario puede realizar busquedas y el listado debe actualizarse con música relacionada con la búqueda</h1>
-  <h2>4. Apartado de Búsquedas para que el usuario pueda buscar la música que le interesa escuchar</h2>
 
-    <p>Search  track</p>
-    <span style="background-color: olivedrab">{{ track }}</span>
-    <p>Search  artist</p>
-    <span style="background-color: olivedrab">{{ artist }}</span>
-    <p>Search  album</p>
-    <span style="background-color: olivedrab">{{ album }}</span>
-
-  <hr>
-  <br>
-
-    <form method="POST" action="{% url 'playList:addTrack' track.title %}" >
-      {% csrf_token %}
-      <input type="submit" name="add">
-    </form>
+<div class="search__container">
+  <div class="search__container-title">
+    <h2>Resultados de tu búsqueda</h2>
+  </div>
+  <div class="results__container">
+    <div class="results__container-songs">
+      <div class="results__container-title">
+        <h3>Canción</h3>
+      </div>
+      <div class="results__container-item">
+        <div class="results__item-cover">
+          <img src="{{ track.image_url }}" alt="{{ track.title }}">
+          <form method="POST" action="{% url 'playList:addTrack' track.title %}" >
+            {% csrf_token %}
+            <input type="submit" name="add">
+          </form>
+        </div>
+        <div class="results__item-details">
+          <div class="track__item-title">{{ track.title }}</div>
+          <div class="track__item-artist">{{ track.artist }}</div>
+          <div class="track__item-album">{{ track.album }}</div>
+          <div class="track__item-duration">{{ track.duration }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="results__container-artist">
+      <div class="results__container-title">
+        <h3>Artista</h3>
+      </div>
+      <div class="results__container-item">
+        <div class="results__item-cover">
+          <img src="{{ artist.image_url }}" alt="{{ artist.artist }}">
+        </div>
+        <div class="results__item-details">
+          <div class="artist__item-artist">{{ artist.artist }}</div>
+          <div class="artist__item-genre">{{ artist.gene }}</div>
+          <div class="artist__item-followers">{{ artist.followers }}</div>
+          <div class="artist__item-popularity">{{ artist.popular }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="results__container-albums">
+      <div class="results__container-title">
+        <h3>Álbum</h3>
+      </div>
+      <div class="results__container-item">
+        <div class="results__item-cover">
+          <img src="{{ album.image_url }}" alt="{{ album.name }}">
+        </div>
+        <div class="results__item-details">
+          <div class="album__item-album">{{ album.name }}</div>
+          <div class="album__item-artist">{{ album.artist }}</div>
+          <div class="album__item-market">{{ album.market }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
