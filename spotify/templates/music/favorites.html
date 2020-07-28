@@ -10,7 +10,7 @@
 <button class="play-button">
                                 Play
                             </button>
-<div class="search__explore--container">
+<div class="favorites__explore--container">
     <div class="table-title">
         <!-- play -->
     </div>
@@ -31,31 +31,33 @@
         <i class="fa fa-clock-o icon"></i>
     </div>
 </div>
-
-{% for item in my_favorites %}
-<div class="table-content">
-    <div class="table-content__text">
-        <div class="play-icon">
-            <i class="fa fa-play-circle-o"></i>
+<div class="fav-results">
+    {% for item in my_favorites %}
+    <div class="table-content">
+        <div class="table-content__text">
+            <div class="play-icon">
+                <i class="fa fa-play-circle-o"></i>
+            </div>
+        </div>
+        <div class="table-content__text">
+            <!-- like -->
+            <div class="table-content__text--like">
+                <i class="fa fa-heart"></i>
+            </div>
+        </div>
+        <div class="table-content__text">
+            <p>{{ item.track.title }}</p>
+        </div>
+        <div class="table-content__text">
+            <p>{{ item.track.artist }}</p>
+        </div>
+        <div class="table-content__text">
+            <p>{{ item.track.album }}</p>
+        </div>
+        <div class="table-content__text">
+            <p>{{ item.track.duration }}</p>
         </div>
     </div>
-    <div class="table-content__text">
-        <!-- like -->
-        <div class="table-content__text--like">
-            <i class="fa fa-heart"></i>
-        </div>
-    </div>
-    <div class="table-content__text">
-        <p>{{ item.track.title }}</p>
-    </div>
-    <div class="table-content__text">
-        <p>{{ item.track.artist }}</p>
-    </div>
-    <div class="table-content__text">
-        <p>{{ item.track.album }}</p>
-    </div>
-    <div class="table-content__text">
-        <p>{{ item.track.duration }}</p>
-    </div>
+    {% endfor %}
 </div>
-{% endfor %} {% endblock %}
+{% endblock %}
