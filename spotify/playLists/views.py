@@ -28,7 +28,7 @@ def add_track(request, title):
         save_track_in_db(title)
         add_in_user_library(user, TRACK)
 
-    return redirect('music:search')
+    return redirect('music:myLibrary')
 
 
 def search_track(title):

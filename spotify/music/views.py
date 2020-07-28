@@ -14,7 +14,7 @@ from spotify.scraping.scraping import get_info_by_search_name, get_token
 
 def search(request):
     """View search"""
-    data_search = json.loads(get_info_by_search_name('La santa',  get_token()))
+    data_search = json.loads(get_info_by_search_name(request.GET['search'],  get_token()))
     track = data_search['track']
     artist = data_search['artist']
     album = data_search['album']

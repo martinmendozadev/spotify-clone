@@ -9,7 +9,7 @@ from random import randint
 def get_token():
     token_url = 'https://accounts.spotify.com/api/token'
     params = {'grant_type': 'client_credentials'}
-    headers = {'Authorization': 'Basic ZDQ1NzQyZTE1OTkyNGE5YzlhNjliNjY0ZjBlZmZkMWY6OTk5MGI2ZDc3NTM0NDQ1ZTllN2NlZjYyMjc4ODdjZDk='}
+    headers = {'Authorization': 'Basic ODAwMjM3YWRhMWI4NGUxYTlmNTU1YjY3OGIxZGM5Y2I6ZmQxNjA0Y2Q2YzM4NGIzYThlYzA4ZjI4ZDM0NzA2MWU'}
     r = requests.post(token_url, data=params, headers=headers)
 
     return r.json()['access_token']
