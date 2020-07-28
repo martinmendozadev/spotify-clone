@@ -170,10 +170,30 @@ p {
   padding: 20px 0 0 20px;
   font-size: 1.5em;
   overflow: hidden;
+  line-height: 28px;
 }
 
 .genres:hover {
   cursor: pointer;
+}
+
+.genres h1 {
+  text-transform: uppercase;
+  font-size: 25px;
+  opacity: 0.65;
+}
+
+.genres__cover h3 {
+  font-size: 20px;
+  line-height: 22px;
+}
+
+.genres__cover h5 {
+  font-size: 15px;
+}
+
+.genres__cover p {
+  font-size: 10px;
 }
 
 .genres__cover img {
@@ -187,8 +207,7 @@ p {
   transform: rotate(0.07turn);
   position: relative;
   float: right;
-  margin-top: 20px;
-  margin-right: -20px;
+  margin-right: -25px;
   box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.41);
 }
 
