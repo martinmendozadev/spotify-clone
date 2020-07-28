@@ -135,9 +135,9 @@ p {
     background-color: var(--color-black);
 }
 
-.search__explore--container {
+.library__explore--container {
     display: grid;
-    grid-template-columns: 3% 3% 84% 10%;
+    grid-template-columns: 3% 3% 84% 8%;
     grid-column-gap: 15px;
     margin: 15px 30px 0px 30px;
     height: 100%;
@@ -157,11 +157,10 @@ p {
 
 .table-content {
     display: grid;
-    grid-template-columns: 3% 3% 84% 10%;
+    grid-template-columns: 3% 3% 84% 8%;
     grid-column-gap: 15px;
     margin: 0px 30px 0px 30px;
     padding: 15px;
-    height: 100%;
     border-bottom: solid 1px #545252;
 }
 
@@ -223,4 +222,37 @@ p {
 
 .play-icon {
     display: none;
+}
+
+.fav-results {
+    height: 490px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.fav-results::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.fav-results::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.fav-results::-webkit-scrollbar-button:increment,
+.fav-results::-webkit-scrollbar-button {
+    display: none;
+}
+
+.fav-results::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.fav-results::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #797979;
+}
+
+.fav-results::-webkit-scrollbar-track {
+    border-radius: 10px;
 }
