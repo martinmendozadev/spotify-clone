@@ -1,60 +1,66 @@
-{% extends "base.html" %} {% block head_content %}
-<title>Library</title>
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/library.css' %}"> {% endblock%} {% block container %}
-<div class="search__genres--title">
+{% extends "base.html" %}
+
+{% block head_content %}
+  <title>Library</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/library.css' %}">
+{% endblock%}
+
+{% block container %}
+  <div class="search__genres--title">
     <h2>Biblioteca</h2>
-</div>
-<div class="library__explore--container">
-    <div class="table-title">
-        <p> #</p>
-    </div>
-    <div class="table-title">
-        <!-- like -->
-    </div>
-    <div class="table-title">
-        <p>Título</p>
-    </div>
-    <div class="table-title">
-        <!-- Duración -->
-        <i class="fa fa-clock-o icon"></i>
-    </div>
-</div>
+  </div>
 
-<div class="fav-results">
-    {% for item in MyLibrary %}
-    <div class="table-content">
-        <div class="table-content__text">
-            <div>
-                <p class="number">{{ item.num }}</p>
-                <div class="play-icon">
-                    <i class="fa fa-play-circle-o"></i>
-                </div>
+  <div class="library__explore--container">
+      <div class="table-title">
+          <p> #</p>
+      </div>
+      <div class="table-title">
+          <!-- like -->
+      </div>
+      <div class="table-title">
+          <p>Título</p>
+      </div>
+      <div class="table-title">
+          <!-- Duración -->
+          <i class="fa fa-clock-o icon"></i>
+      </div>
+  </div>
 
-            </div>
-        </div>
-        <div class="table-content__text">
-            <!-- like -->
-            <div class="table-content__text">
-                <form method="POST" action="{% url 'playList:addFavorite' item.track.title %}">
-                    {% csrf_token %}
-                    <button class="liked" type="submit" name="liked">
-                                              {% if item.is_favorite %}
-                                                <i class="fa fa-heart"></i>
-                                              {% else %}
-                                                <i class="fa fa-heart-o"></i>
-                                              {% endif %}
-                                              </button>
-                </form>
-            </div>
-        </div>
-        <div class="table-content__text">
-            <p>{{ item.track.title }}</p>
-        </div>
-        <div class="table-content__text">
-            <p>{{ item.track.duration }}</p>
-        </div>
-    </div>
-    {% endfor %}
-</div>
+  <div class="fav-results">
+      {% for item in MyLibrary %}
+      <div class="table-content">
+          <div class="table-content__text">
+              <div>
+                  <p class="number">{{ item.num }}</p>
+                  <div class="play-icon">
+                      <i class="fa fa-play-circle-o"></i>
+                  </div>
+
+              </div>
+          </div>
+          <div class="table-content__text">
+              <!-- like -->
+              <div class="table-content__text">
+                  <form method="POST" action="{% url 'playList:addFavorite' item.track.title %}">
+                      {% csrf_token %}
+                      <button class="liked" type="submit" name="liked">
+                        {% if item.is_favorite %}
+                          <i class="fa fa-heart"></i>
+                        {% else %}
+                          <i class="fa fa-heart-o"></i>
+                        {% endif %}
+                      </button>
+                  </form>
+              </div>
+          </div>
+          <div class="table-content__text">
+              <p>{{ item.track.title }}</p>
+          </div>
+          <div class="table-content__text">
+              <p>{{ item.track.duration }}</p>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
 {% endblock %}
