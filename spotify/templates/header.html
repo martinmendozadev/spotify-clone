@@ -11,18 +11,22 @@
                     <span>
                       <i class="icon-circle-right"></i>
                     </span>
-                    <div class="input-container">
-                      <span class="search-icon">
-                        <i class="icon-search"></i>
-                      </span>
-                      <input
-                        type="text"
-                        name=""
-                        id=""
-                        placeholder="Buscar Artistas, canciones o podcasts"
-                      />
-                    </div>
+                    <form method="GET" action="{% url 'music:search' %}" >
+                      <div class="input-container">
+                        {% csrf_token %}
+                          <button class="search-icon" type="submit" name="searcher">
+                              <i class="icon-search"></i>
+                          </button>
+                        <input
+                          type="text"
+                          name="search"
+                          id=""
+                          placeholder="Buscar Artistas, canciones o podcasts"
+                        />
+                        </div>
+                      </form>
                   </div>
+
                   <div class="search__header--img">
                     <a href="{% url 'users:update' user.username %}">
                       {% if user.picture %}

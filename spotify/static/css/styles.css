@@ -2,14 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  /* min-width: 768px; ELIMINADO POR JAVIER
-  min-height: 600px;
-  display: flex;
-  overscroll-behavior-y: none;
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%; */
+  background-color: #191414;
 }
 
 body,
@@ -48,12 +41,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* #main,
-.App {
-  height: 100%;
-  position: relative;
-} */
-
 #main {
   width: 100%;
   z-index: 0;
@@ -77,11 +64,6 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* .App_top-bar { ELIMINÓ JAVIER
-  grid-area: main-view;
-  height: 60px;
-  z-index: 2;
-} */
 
 .App__nav-bar {
   display: flex;
@@ -108,8 +90,6 @@ a:hover {
   margin-bottom: 18px;
 }
 
-/* .App__main-view, - ELIMINÓ JAVIER*/
-/* .App__nav-bar { */
 
 .App__now-playing-bar {
   grid-area: now-playing-bar;
@@ -484,4 +464,9 @@ a:hover {
   align-items: center;
   width: 136px;
   display: flex;
+}
+
+.input-container button {
+  background-color: transparent;
+  border: none;
 }
