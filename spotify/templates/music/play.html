@@ -1,27 +1,23 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block head_content %}
+<title>Play</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/play.css' %}" />
+{% endblock%} {% block container %}
 
-{% block head_content %}
-    <title>Play</title>
-  {% load static %}
-    <link rel="stylesheet" href="{% static 'css/play.css' %}">
-{% endblock%}
-
-{% block container %}
-
-  <div class="play__container">
-    <div class="play__container-album">
-      <div class="play__item-bg"></div>
-      <div class="play__item-cover">
-        <img src="https://i.scdn.co/image/d8316b76953bb667a8b067b64267f3b03d864952" alt="">
+<div class="play__container">
+  <div class="play__container-album">
+    <div class="play__item-bg"></div>
+    <div class="play__item-cover">
+      <img src="{{ data.image }}" alt="" />
+    </div>
+    <div class="play__container-details">
+      <div class="play__item-title">
+        <h3>Álbum</h3>
       </div>
-      <div class="play__container-details">
-        <div class="play__item-title">
-          <h3>Álbum</h3>
-        </div>
-        <div class="play__item-album">{{ track.album }}</div>
-        <div class="play__item-artist">{{ track.artist }}</div>
-      </div>
+      <div class="play__item-album">{{ data.album }}</div>
+      <div class="play__item-artist">{{ data.artist }}</div>
     </div>
   </div>
+</div>
 
 {% endblock %}
