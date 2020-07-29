@@ -142,12 +142,15 @@ def get_info_by_search_name(search_name, token):
                         }
                 }
 
-        result['track']['image_url'] = result_search_name['tracks']['items'][0]['album']['images'][1]['url']
-        result['track']['title'] = result_search_name['tracks']['items'][0]['name']
-        result['track']['artist'] = result_search_name['tracks']['items'][0]['artists'][0]['name']
-        result['track']['album'] = result_search_name['tracks']['items'][0]['album']['name']
-        duration_time = result_search_name['tracks']['items'][0]['duration_ms']
-        result['track']['duration'] = time.strftime("%M:%S", time.gmtime(duration_time/1000))
+        try:
+            result['track']['image_url'] = result_search_name['tracks']['items'][0]['album']['images'][1]['url']
+            result['track']['title'] = result_search_name['tracks']['items'][0]['name']
+            result['track']['artist'] = result_search_name['tracks']['items'][0]['artists'][0]['name']
+            result['track']['album'] = result_search_name['tracks']['items'][0]['album']['name']
+            duration_time = result_search_name['tracks']['items'][0]['duration_ms']
+            result['track']['duration'] = time.strftime("%M:%S", time.gmtime(duration_time / 1000))
+        except IndexError as err:
+            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ searching Track: ', err)
 
         try:
             result['artist']['image_url'] = result_search_name['artists']['items'][0]['images'][1]['url']
@@ -155,17 +158,18 @@ def get_info_by_search_name(search_name, token):
             result['artist']['followers'] = result_search_name['artists']['items'][0]['followers']['total']
             result['artist']['gen'] = result_search_name['artists']['items'][0]['genres'][0]
             result['artist']['population'] = result_search_name['artists']['items'][0]['popularity']
-
         except IndexError as err:
-            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ: ', err)
+            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ searching Artist: ', err)
 
-        result['album']['image_url'] = result_search_name['albums']['items'][0]['images'][1]['url']
-        result['album']['name'] = result_search_name['albums']['items'][0]['name']
-        result['album']['artist'] = result_search_name['albums']['items'][0]['artists'][0]['name']
+        try:
+            result['album']['image_url'] = result_search_name['albums']['items'][0]['images'][1]['url']
+            result['album']['name'] = result_search_name['albums']['items'][0]['name']
+            result['album']['artist'] = result_search_name['albums']['items'][0]['artists'][0]['name']
+        except IndexError as err:
+            print('uups, we have a problem with your search, I dare you to try again (つ▀¯▀)つ searching Album: ', err)
 
         result_name_json = json.dumps(result)
         return result_name_json
-
     else:
         print(search.status_code)
         print('Request invalid')

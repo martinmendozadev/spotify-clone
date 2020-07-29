@@ -14,57 +14,28 @@ from spotify.scraping.scraping import get_info_by_search_name, get_token
 
 def search(request):
     """View search"""
-    data_search = json.loads(get_info_by_search_name(request.GET['search'],  get_token()))
-    track = data_search['track']
-    artist = data_search['artist']
-    album = data_search['album']
-    context = {
-        'track': track,
-        'artist': artist,
-        'album': album,
-    }
+    try:
+        data_search = json.loads(get_info_by_search_name(request.GET['search'],  get_token()))
+        track = data_search['track']
+        artist = data_search['artist']
+        album = data_search['album']
+        context = {
+            'track': track,
+            'artist': artist,
+            'album': album,
+        }
+    except:
+        context = {
+            'track': None,
+            'artist': None,
+            'album': None,
+        }
 
     return render(
         request=request,
         template_name='music/search.html',
         context=context,
     )
-
-
-"""
-def myLibrary(request):
-    data = [
-        {
-            'num': '1',
-            'title': 'Title 1',
-            'is_favorite': 'false',
-            'duration': '00:00:00',
-        },
-        {
-            'num': '2',
-            'title': 'Title 2',
-            'is_favorite': 'false',
-            'duration': '00:00:00',
-        },
-        {
-            'num': '3',
-            'title': 'Title 3',
-            'is_favorite': 'true',
-            'duration': '00:00:00',
-        },
-        {
-            'num': '4',
-            'title': 'Title 4',
-            'is_favorite': 'false',
-            'duration': '00:00:00',
-        },
-    ]
-
-    return render(
-        request=request,
-        template_name='music/myLibrary.html',
-        context={'data': data}
-    )"""
 
 
 class MyLibrary (ListView):
@@ -95,45 +66,6 @@ def play(request):
 
 def save():
     pass
-
-
-"""
-def favorite(request):
-    data = [
-        {
-            'title': 'title song',
-            'artist': 'Artist name',
-            'album': 'Album name',
-            'duration': 'minutes',
-            'is_favorite': 'true',
-        },
-        {
-            'title': 'title song 2',
-            'artist': 'Artist name 2',
-            'album': 'Album name 2',
-            'duration': 'minutes 2',
-            'is_favorite': 'true',
-        },
-        {
-            'title': 'title song 3',
-            'artist': 'Artist name 3',
-            'album': 'Album name 3',
-            'duration': 'minutes 3',
-            'is_favorite': 'true',
-        },
-        {
-            'title': 'title song 4',
-            'artist': 'Artist name 4',
-            'album': 'Album name 4',
-            'duration': 'minutes 4',
-            'is_favorite': 'true',
-        },
-    ]
-    return render(
-        request=request,
-        template_name='music/favorites.html',
-        context={'data': data}
-    )"""
 
 
 class Favorites (ListView):
