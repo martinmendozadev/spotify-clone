@@ -7,23 +7,23 @@
 {% endblock%}
 
 {% block container %}
-
+<br>
   <div class="search__container">
     <div class="search__container-title">
-      <h2>Resultados de tu búsqueda</h2>
+      <h5>Resultados de tu búsqueda</h5><br><br>
     </div>
     <div class="results__container">
       <div class="results__container-songs">
         <div class="results__container-title">
-          <h3>Canción</h3>
+          <h3>Canción</h3><br>
         </div>
         <div class="results__container-item">
           <div class="results__item-cover">
             <img src="{{ track.image_url }}" alt="{{ track.title }}">
             <form method="POST" action="{% url 'playList:addTrack' track.title %}" >
               {% csrf_token %}
-              <input type="submit" name="add">
-            </form>
+              <input type="submit" name="add" value="Agregar">
+            </form><br><br><br>
           </div>
           <div class="results__item-details">
             <div class="track__item-title">{{ track.title }}</div>
@@ -32,10 +32,10 @@
             <div class="track__item-duration">{{ track.duration }}</div>
           </div>
         </div>
-      </div>
+      </div><br><br>
       <div class="results__container-artist">
         <div class="results__container-title">
-          <h3>Artista</h3>
+          <h3>Artista</h3><br>
         </div>
         <div class="results__container-item">
           <div class="results__item-cover">
@@ -48,10 +48,10 @@
             <div class="artist__item-popularity">{{ artist.popular }}</div>
           </div>
         </div>
-      </div>
+      </div><br><br>
       <div class="results__container-albums">
         <div class="results__container-title">
-          <h3>Álbum</h3>
+          <h3>Álbum</h3><br>
         </div>
         <div class="results__container-item">
           <div class="results__item-cover">
@@ -63,7 +63,7 @@
             <div class="album__item-market">{{ album.market }}</div>
           </div>
         </div>
-      </div>
+      </div><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
   </div>
 

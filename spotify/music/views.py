@@ -51,10 +51,10 @@ class MyLibrary (ListView):
 
 def play(request):
     data = {
-        'title': 'Title',
-        'album': 'Album',
-        'artist': 'Artist Name',
-        'duration': '00:00:00',
+        'title': 'BitâKora 5: Marcas en tiempos de COVID, Elon Musk y Bose.',
+        'album': 'Podcast',
+        'artist': 'Nadia Molina',
+        'duration': '47:89:14',
     }
 
     return render(
