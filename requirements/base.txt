@@ -20,7 +20,7 @@ whitenoise==5.0.1
 redis==3.5.0
 django-redis==4.11.0
 celery==4.4.2
-flower==0.9.4
+flower==1.2.0
 
 # Scraping
 requests==2.24.0
